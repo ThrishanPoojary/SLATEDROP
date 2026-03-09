@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrishan Poojary | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
+        .hero-gradient { background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.1), transparent), radial-gradient(circle at bottom left, rgba(147, 51, 234, 0.05), transparent); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 selection:bg-indigo-100 selection:text-indigo-700">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 border-b border-slate-200 glass-nav">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="text-2xl font-extrabold tracking-tighter text-indigo-600">TP.</div>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#home" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">Home</a>
+                <a href="#about" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">About</a>
+                <a href="#projects" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors">Projects</a>
+                <a href="#contact" class="bg-indigo-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-200">Contact Me</a>
+            </div>
+
+            <button class="md:hidden text-slate-600" onclick="toggleMenu()">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 p-6 space-y-4">
+            <a href="#home" class="block text-lg font-medium" onclick="toggleMenu()">Home</a>
+            <a href="#about" class="block text-lg font-medium" onclick="toggleMenu()">About</a>
+            <a href="#projects" class="block text-lg font-medium" onclick="toggleMenu()">Projects</a>
+            <a href="#contact" class="block text-lg font-medium text-indigo-600" onclick="toggleMenu()">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-40 pb-20 px-6 hero-gradient">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="flex-1 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold uppercase mb-6 tracking-wider">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                    </span>
+                    Open for collaboration
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1]">
+                    Hey, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Thrishan.</span>
+                </h1>
+                <p class="text-xl text-slate-600 mb-10 max-w-xl leading-relaxed">
+                    A dedicated developer building sleek, functional web experiences. Passionate about turning complex ideas into digital reality.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                    <a href="#projects" class="bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold hover:bg-slate-800 transition-all flex items-center gap-2 group">
+                        View Projects
+                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <div class="flex items-center gap-3">
+                        <a href="#" class="p-4 bg-white border border-slate-200 rounded-2xl text-slate-600 hover:text-indigo-600 transition-all shadow-sm">
+                            <i data-lucide="github"></i>
+                        </a>
+                        <a href="#" class="p-4 bg-white border border-slate-200 rounded-2xl text-slate-600 hover:text-indigo-600 transition-all shadow-sm">
+                            <i data-lucide="linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 flex justify-center">
+                <div class="relative w-72 h-72 md:w-96 md:h-96">
+                    <div class="absolute inset-0 bg-indigo-200 rounded-[3rem] rotate-6"></div>
+                    <div class="absolute inset-0 bg-slate-200 rounded-[3rem] flex items-center justify-center text-8xl font-black text-white bg-gradient-to-br from-indigo-500 to-purple-600 shadow-2xl">
+                        TP
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="space-y-6">
+                    <h2 class="text-4xl font-extrabold tracking-tight">Crafting Digital Solutions with Precision</h2>
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        I focus on creating high-performance web applications that provide seamless user experiences. My approach combines clean architecture with modern design trends.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 pt-4">
+                        <div class="border-l-4 border-indigo-600 pl-4">
+                            <h4 class="text-2xl font-bold">3+</h4>
+                            <p class="text-slate-500 text-sm">Years Experience</p>
+                        </div>
+                        <div class="border-l-4 border-indigo-600 pl-4">
+                            <h4 class="text-2xl font-bold">15+</h4>
+                            <p class="text-slate-500 text-sm">Major Projects</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i data-lucide="terminal" class="text-indigo-600"></i> Tech Stack
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-semibold">JavaScript</span>
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-semibold">React.js</span>
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-semibold">Tailwind CSS</span>
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-semibold">Node.js</span>
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-semibold">MongoDB</span>
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-semibold">Python</span>
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-semibold">UI/UX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-24 px-6 bg-slate-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-16 text-center">
+                <h2 class="text-4xl font-extrabold mb-4">Selected Works</h2>
+                <div class="h-1.5 w-20 bg-indigo-600 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-200 hover:shadow-xl transition-all group">
+                    <div class="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <i data-lucide="shopping-bag"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Eco-Store</h3>
+                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">A sustainable e-commerce platform built for high-scale performance and accessibility.</p>
+                    <div class="flex items-center gap-2 text-indigo-600 font-bold text-sm">
+                        Case Study <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-200 hover:shadow-xl transition-all group">
+                    <div class="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                        <i data-lucide="layout"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">SaaS Dashboard</h3>
+                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">Complex data visualization for business metrics with real-time API integrations.</p>
+                    <div class="flex items-center gap-2 text-indigo-600 font-bold text-sm">
+                        Case Study <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-200 hover:shadow-xl transition-all group">
+                    <div class="w-12 h-12 bg-pink-50 rounded-2xl flex items-center justify-center text-pink-600 mb-6 group-hover:bg-pink-600 group-hover:text-white transition-colors">
+                        <i data-lucide="smartphone"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Finance App</h3>
+                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">Mobile-first banking application design and frontend implementation.</p>
+                    <div class="flex items-center gap-2 text-indigo-600 font-bold text-sm">
+                        Case Study <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto bg-slate-900 rounded-[3rem] p-12 md:p-20 text-white relative overflow-hidden">
+            <div class="relative z-10 grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-5xl font-extrabold mb-8 leading-tight">Start a conversation</h2>
+                    <p class="text-slate-400 text-lg mb-12">I'm currently available for freelance projects and full-time opportunities.</p>
+                    
+                    <div class="space-y-8">
+                        <a href="mailto:thrihanpoojary208@gmail.com" class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-indigo-600 transition-all">
+                                <i data-lucide="mail" class="text-indigo-400 group-hover:text-white"></i>
+                            </div>
+                            <div>
+                                <span class="block text-sm text-slate-500 font-bold uppercase tracking-widest mb-1">Email</span>
+                                <span class="text-xl font-semibold">thrihanpoojary208@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="tel:9148597289" class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-indigo-600 transition-all">
+                                <i data-lucide="phone" class="text-indigo-400 group-hover:text-white"></i>
+                            </div>
+                            <div>
+                                <span class="block text-sm text-slate-500 font-bold uppercase tracking-widest mb-1">Phone</span>
+                                <span class="text-xl font-semibold">+91 91485 97289</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white/5 p-8 rounded-3xl border border-white/10">
+                    <div class="space-y-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" placeholder="Name" class="w-full bg-transparent border border-white/20 rounded-xl px-5 py-4 focus:border-indigo-500 outline-none transition-all">
+                            <input type="email" placeholder="Email" class="w-full bg-transparent border border-white/20 rounded-xl px-5 py-4 focus:border-indigo-500 outline-none transition-all">
+                        </div>
+                        <textarea placeholder="How can I help you?" rows="4" class="w-full bg-transparent border border-white/20 rounded-xl px-5 py-4 focus:border-indigo-500 outline-none transition-all"></textarea>
+                        <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-5 rounded-xl transition-all flex items-center justify-center gap-3">
+                            Send Message <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-slate-200">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="text-xl font-extrabold tracking-tighter text-indigo-600">TP.</div>
+            <p class="text-slate-500 text-sm">© <script>document.write(new Date().getFullYear())</script> Thrishan Poojary. All rights reserved.</p>
+            <div class="text-xs font-bold text-slate-400 uppercase tracking-widest border-t md:border-t-0 pt-4 md:pt-0">
+                Designed by <span class="text-slate-900">Pratheek designs</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Smooth scroll adjustment for fixed nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
