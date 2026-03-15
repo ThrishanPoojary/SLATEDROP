@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom' // ADD THIS LINE
 import App from './App.jsx'
 import './index.css'
 
-// This connects the React 'App' to the <div id="root"> in your index.html
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter> {/* Wrap App in BrowserRouter here */}
       <App />
     </BrowserRouter>
   </React.StrictMode>,
