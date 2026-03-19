@@ -160,8 +160,9 @@
                 <!-- Web3Forms Access Key -->
                 <input type="hidden" name="access_key" value="603ccc28-dbeb-4231-a39f-b024e23ac97f">
                 <input type="hidden" name="from_name" value="Thrishan Portfolio">
-                <!-- Custom Redirect to thanku.html -->
-                <input type="hidden" name="redirect" value="thanku.html">
+                
+                <!-- CUSTOM REDIRECTION LOGIC -->
+                <input type="hidden" name="redirect" value="https://slatedrop.pratheek.shop/thanku.html">
                 
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
@@ -211,7 +212,7 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // AJAX Form Submission for better UX & Redirection
+        // AJAX Form Submission with Redirection
         const form = document.getElementById('contact-form');
         const status = document.getElementById('form-status');
 
@@ -235,8 +236,8 @@
             })
             .then(async (response) => {
                 if (response.status == 200) {
-                    // Success: Redirect to the custom Thank You page
-                    window.location.href = 'thanku.html';
+                    // Success: Redirect to the custom Thank You page using the full domain
+                    window.location.href = 'https://slatedrop.pratheek.shop/thanku.html';
                 } else {
                     const json = await response.json();
                     status.innerHTML = json.message || "Something went wrong.";
