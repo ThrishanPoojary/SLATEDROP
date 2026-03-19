@@ -25,6 +25,20 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200 overflow-x-hidden">
@@ -38,9 +52,11 @@
             <a href="#education" class="hover:text-blue-400 transition">Education</a>
             <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
         </div>
-        <button class="md:hidden" id="menu-btn">
-            <i data-lucide="menu"></i>
-        </button>
+        <div class="md:hidden">
+            <button id="menu-btn" class="p-2">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -73,7 +89,6 @@
             <div class="relative group">
                 <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
                 <div class="relative aspect-square rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center overflow-hidden">
-                    <!-- Placeholder Icon -->
                     <i data-lucide="user" class="w-32 h-32 text-slate-700"></i>
                 </div>
             </div>
@@ -86,7 +101,7 @@
                     With a successful completion of my first semester, I've built a strong foundation in core engineering principles.
                 </p>
                 <p class="text-slate-400 mb-8 text-lg">
-                    As I step into my second semester, I am eager to dive deeper into technical specializations, problem-solving, and collaborative projects that bridge the gap between theory and application.
+                    As I step into my second semester, I am eager to dive deeper into technical specializations, problem-solving, and collaborative projects.
                 </p>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="p-4 rounded-xl glass-card">
@@ -116,9 +131,9 @@
                     <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-600 border-4 border-slate-950"></div>
                     <div class="mb-1 text-blue-400 font-semibold uppercase text-sm tracking-widest">Currently (2024 - Present)</div>
                     <h3 class="text-2xl font-bold text-white mb-2">B.E. in Engineering</h3>
-                    <p class="text-blue-200 font-medium mb-4">Mangalore Institute of Technology and Engineering (MITE)</p>
+                    <p class="text-blue-200 font-medium mb-4">MITE (Mangalore Institute of Technology and Engineering)</p>
                     <div class="p-5 rounded-xl glass-card border-blue-500/20">
-                        <p class="text-slate-400 italic">"Just wrapped up the first semester with a focus on core engineering mathematics and physics. Now actively exploring technical clubs and starting Second Semester with renewed vigor."</p>
+                        <p class="text-slate-400 italic leading-relaxed">"Just wrapped up the first semester with a focus on core engineering sciences. Now entering Second Semester with a focus on practical applications and technical skill-building."</p>
                     </div>
                 </div>
 
@@ -127,7 +142,7 @@
                     <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-800 border-4 border-slate-950"></div>
                     <div class="mb-1 text-slate-500 font-semibold uppercase text-sm tracking-widest">Prior</div>
                     <h3 class="text-xl font-bold text-slate-300 mb-2">Pre-University Education</h3>
-                    <p class="text-slate-400">Completed with a strong foundation in Science and Mathematics, paving the way for my engineering career.</p>
+                    <p class="text-slate-400">Successfully completed PU education with a strong emphasis on PCM, setting the stage for higher technical education.</p>
                 </div>
             </div>
         </div>
@@ -141,38 +156,31 @@
                 <p class="text-slate-400">Have a question or want to work together? Drop me a message!</p>
             </div>
 
-            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
-                <!-- Updated with your Web3Forms access key -->
+            <form action="https://api.web3forms.com/submit" method="POST" id="contact-form" class="space-y-6">
+                <!-- Web3Forms Access Key -->
                 <input type="hidden" name="access_key" value="603ccc28-dbeb-4231-a39f-b024e23ac97f">
-                <input type="hidden" name="from_name" value="Portfolio Lead - Thrishan">
+                <input type="hidden" name="from_name" value="Thrishan Portfolio">
+                <!-- Custom Redirect to thanku.html -->
+                <input type="hidden" name="redirect" value="thanku.html">
                 
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-sm font-medium text-slate-400 mb-2">Full Name</label>
-                        <input type="text" name="name" required placeholder="Enter your name" 
-                               class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 focus:border-blue-500 focus:outline-none transition">
+                        <input type="text" name="name" required placeholder="John Doe" 
+                               class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 focus:border-blue-500 focus:outline-none transition text-white">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-slate-400 mb-2">Email Address</label>
-                        <input type="email" name="email" required placeholder="email@example.com" 
-                               class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 focus:border-blue-500 focus:outline-none transition">
+                        <input type="email" name="email" required placeholder="john@example.com" 
+                               class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 focus:border-blue-500 focus:outline-none transition text-white">
                     </div>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-slate-400 mb-2">Subject</label>
-                    <input type="text" name="subject" required placeholder="What's this about?" 
-                           class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 focus:border-blue-500 focus:outline-none transition">
                 </div>
                 
                 <div>
                     <label class="block text-sm font-medium text-slate-400 mb-2">Message</label>
-                    <textarea name="message" required rows="5" placeholder="Your message here..." 
-                              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 focus:border-blue-500 focus:outline-none transition"></textarea>
+                    <textarea name="message" required rows="5" placeholder="How can I help you?" 
+                              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 focus:border-blue-500 focus:outline-none transition text-white"></textarea>
                 </div>
-
-                <!-- Honeypot Spam Protection -->
-                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
                 <button type="submit" 
                         class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold py-4 rounded-xl transition shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2">
@@ -180,17 +188,22 @@
                 </button>
             </form>
             
-            <div id="result" class="mt-4 text-center text-sm hidden"></div>
+            <div id="form-status" class="mt-4 text-center text-sm hidden"></div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-slate-900 text-center">
-        <p class="text-slate-500 text-sm">© 2024 Thrishan Poojary. Built with Engineering Passion.</p>
+    <footer class="py-12 border-t border-slate-900 text-center relative">
+        <p class="text-slate-500 text-sm">© 2024 Thrishan Poojary. MITE Engineering Student.</p>
         <div class="flex justify-center gap-6 mt-6">
             <a href="#" class="text-slate-400 hover:text-white transition"><i data-lucide="github"></i></a>
             <a href="#" class="text-slate-400 hover:text-white transition"><i data-lucide="linkedin"></i></a>
-            <a href="#" class="text-slate-400 hover:text-white transition"><i data-lucide="twitter"></i></a>
+            <a href="#" class="text-slate-400 hover:text-white transition"><i data-lucide="mail"></i></a>
+        </div>
+        
+        <!-- Subtle Credit -->
+        <div class="mt-8 opacity-20 hover:opacity-100 transition duration-500">
+            <p class="text-[9px] uppercase tracking-[0.3em] text-slate-500">Designed by Pratheek Designs</p>
         </div>
     </footer>
 
@@ -198,56 +211,43 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Simple Mobile Menu Toggle
-        document.getElementById('menu-btn').addEventListener('click', () => {
-            console.log("Mobile menu clicked");
-        });
-
-        // Web3Forms success message handler
-        const form = document.querySelector('form');
-        const result = document.getElementById('result');
+        // AJAX Form Submission for better UX & Redirection
+        const form = document.getElementById('contact-form');
+        const status = document.getElementById('form-status');
 
         form.addEventListener('submit', function(e) {
-            const formData = new FormData(form);
             e.preventDefault();
-
+            const formData = new FormData(form);
             const object = Object.fromEntries(formData);
             const json = JSON.stringify(object);
 
-            result.innerHTML = "Please wait...";
-            result.classList.remove('hidden');
-            result.className = "mt-4 text-center text-sm text-slate-400";
+            status.innerHTML = "Sending your message...";
+            status.className = "mt-4 text-center text-sm text-blue-400";
+            status.classList.remove('hidden');
 
             fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: json
-                })
-                .then(async (response) => {
-                    let json = await response.json();
-                    if (response.status == 200) {
-                        result.innerHTML = "Success! Your message has been sent.";
-                        result.className = "mt-4 text-center text-sm text-green-500";
-                        form.reset();
-                    } else {
-                        console.log(response);
-                        result.innerHTML = json.message;
-                        result.className = "mt-4 text-center text-sm text-red-500";
-                    }
-                })
-                .catch(error => {
-                    console.log(error);
-                    result.innerHTML = "Something went wrong!";
-                    result.className = "mt-4 text-center text-sm text-red-500";
-                })
-                .then(function() {
-                    setTimeout(() => {
-                        result.classList.add('hidden');
-                    }, 5000);
-                });
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                if (response.status == 200) {
+                    // Success: Redirect to the custom Thank You page
+                    window.location.href = 'thanku.html';
+                } else {
+                    const json = await response.json();
+                    status.innerHTML = json.message || "Something went wrong.";
+                    status.className = "mt-4 text-center text-sm text-red-500";
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                status.innerHTML = "Submission failed. Please check your connection.";
+                status.className = "mt-4 text-center text-sm text-red-500";
+            });
         });
     </script>
 </body>
