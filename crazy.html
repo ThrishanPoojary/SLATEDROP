@@ -791,7 +791,7 @@ body { scrollbar-color: #45513f #080a08; }
         </nav>
 
         <section class="site-hero">
-          <div class="site-kicker" id="siteKicker">HELLO, I'M THRISHAN POJARY</div>
+          <div class="site-kicker" id="siteKicker">HELLO, I'M THRISHAN POOJARY</div>
           <h2 class="site-title" id="siteTitle">
             Building ideas<br>into <span>reality.</span>
           </h2>
@@ -899,6 +899,21 @@ body { scrollbar-color: #45513f #080a08; }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <script>
+/* Check dependencies before calling GSAP APIs.
+   The previous version checked this at the very end, after the script had
+   already crashed if either CDN library failed to load. */
+if (!window.gsap || !window.ScrollTrigger) {
+  document.body.innerHTML = `
+    <div style="min-height:100vh;display:grid;place-items:center;padding:30px;background:#080a08;color:#edf1e9;font-family:Arial;text-align:center">
+      <div>
+        <h1>Website construction experience</h1>
+        <p>The animation library could not load. Check your internet connection, then reload this page.</p>
+        <a href="index.html" style="color:#a3f36b">Go to portfolio</a>
+      </div>
+    </div>`;
+  throw new Error("GSAP or ScrollTrigger failed to load.");
+}
+
 gsap.registerPlugin(ScrollTrigger);
 
 const $ = (selector) => document.querySelector(selector);
@@ -1289,17 +1304,7 @@ window.addEventListener("resize", () => {
   ScrollTrigger.refresh();
 });
 
-/* If GSAP fails to load, show a useful fallback instead of a blank screen */
-if (!window.gsap || !window.ScrollTrigger) {
-  document.body.innerHTML = `
-    <div style="min-height:100vh;display:grid;place-items:center;padding:30px;background:#080a08;color:#edf1e9;font-family:Arial;text-align:center">
-      <div>
-        <h1>Website construction experience</h1>
-        <p>Please check your internet connection and reload to load the animation libraries.</p>
-        <a href="index.html" style="color:#a3f36b">Go to portfolio</a>
-      </div>
-    </div>`;
-}
+/* GSAP and ScrollTrigger were verified before initialization above. */
 </script>
 
 </body>
