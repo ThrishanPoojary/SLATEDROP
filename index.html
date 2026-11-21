@@ -2,998 +2,1128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thrishan | Built While You Scroll</title>
-<meta name="description" content="Thrishan Poojary — AI and Machine Learning engineering student, developer and entrepreneur.">
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
-:root {
-  --bg:#080a0f;
-  --panel:#10141e;
-  --border:#252b3a;
-  --muted:#9099aa;
-  --white:#f4f5fa;
-  --html:#ff9d5c;
-  --css:#8d83ff;
-  --js:#6de4ba;
-}
-
-* { box-sizing:border-box; margin:0; padding:0; }
-
-html { scroll-behavior:smooth; }
-
-body {
-  background:var(--bg);
-  color:var(--white);
-  font-family:'DM Sans',sans-serif;
-  overflow-x:hidden;
-}
-
-a { color:inherit; text-decoration:none; }
-
-#progress {
-  position:fixed;
-  top:0;left:0;
-  height:3px;
-  width:0;
-  z-index:1000;
-  background:linear-gradient(90deg,var(--html),var(--css),var(--js));
-}
-
-.container {
-  width:min(1120px,90%);
-  margin:auto;
-}
-
-.mono { font-family:'DM Mono',monospace; }
-
-header {
-  position:fixed;
-  z-index:100;
-  width:100%;
-  top:0;
-  background:rgba(8,10,15,.85);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,.07);
-}
-
-.nav {
-  height:70px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.brand {
-  font-family:'Space Grotesk';
-  font-size:20px;
-  font-weight:700;
-}
-
-.brand span { color:var(--css); }
-
-.nav-status {
-  font:11px 'DM Mono';
-  color:var(--js);
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.dot {
-  width:7px;height:7px;
-  border-radius:50%;
-  background:var(--js);
-  box-shadow:0 0 12px var(--js);
-}
-
-.intro {
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  padding:130px 0 70px;
-  background:
-    radial-gradient(ellipse at 80% 40%,rgba(113,95,255,.12),transparent 45%),
-    radial-gradient(ellipse at 10% 80%,rgba(0,220,180,.06),transparent 35%);
-}
-
-.eyebrow {
-  color:var(--js);
-  font:12px 'DM Mono';
-  letter-spacing:2px;
-  margin-bottom:25px;
-}
-
-h1 {
-  font:700 clamp(48px,8vw,100px)/.99 'Space Grotesk';
-  letter-spacing:-5px;
-  max-width:850px;
-}
-
-h1 span {
-  color:var(--css);
-}
-
-.intro p {
-  color:var(--muted);
-  max-width:550px;
-  margin-top:28px;
-  font-size:17px;
-  line-height:1.8;
-}
-
-.scroll-note {
-  margin-top:70px;
-  display:flex;
-  align-items:center;
-  gap:14px;
-  color:var(--muted);
-  font:11px 'DM Mono';
-}
-
-.scroll-line {
-  height:1px;
-  width:55px;
-  background:var(--js);
-  animation:line 1.5s infinite alternate;
-}
-
-@keyframes line {
-  to { width:100px; opacity:.3; }
-}
-
-/* BUILDING STAGE */
-
-.build-section {
-  min-height:390vh;
-  position:relative;
-  border-top:1px solid var(--border);
-}
-
-.sticky-stage {
-  position:sticky;
-  top:70px;
-  height:calc(100vh - 70px);
-  min-height:580px;
-  display:flex;
-  align-items:center;
-  padding:30px 0;
-}
-
-.stage-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:22px;
-  width:100%;
-  align-items:center;
-}
-
-.terminal {
-  border:1px solid var(--border);
-  border-radius:13px;
-  overflow:hidden;
-  background:#0d111a;
-  box-shadow:0 25px 90px rgba(0,0,0,.35);
-}
-
-.terminal-head {
-  height:43px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 15px;
-  background:#141925;
-  border-bottom:1px solid var(--border);
-  font:11px 'DM Mono';
-  color:var(--muted);
-}
-
-.traffic { display:flex; gap:6px; }
-.traffic i {
-  width:8px;height:8px;
-  border-radius:50%;
-  background:#ff625d;
-}
-.traffic i:nth-child(2) { background:#ffc14d; }
-.traffic i:nth-child(3) { background:#4bd58b; }
-
-.tabs {
-  display:flex;
-  gap:0;
-  background:#10141e;
-  border-bottom:1px solid var(--border);
-}
-
-.tab {
-  padding:11px 13px;
-  font:10px 'DM Mono';
-  color:var(--muted);
-  border-right:1px solid var(--border);
-}
-
-.tab.active { color:white; background:#1b2130; }
-
-.code-area {
-  min-height:300px;
-  padding:23px 17px;
-  position:relative;
-  overflow:hidden;
-}
-
-.code-lines {
-  font:clamp(9px,1.1vw,12px)/2 'DM Mono';
-  color:#b3bdce;
-  white-space:pre-wrap;
-  overflow-wrap:anywhere;
-  min-height:220px;
-}
-
-.code-lines .orange { color:var(--html); }
-.code-lines .purple { color:var(--css); }
-.code-lines .green { color:var(--js); }
-.code-lines .blue { color:#8cc7ff; }
-.code-lines .dim { color:#596478; }
-
-.cursor-label {
-  position:absolute;
-  top:13px;
-  right:14px;
-  display:flex;
-  align-items:center;
-  gap:6px;
-  font:10px 'DM Mono';
-}
-
-.cursor-label b {
-  width:7px;height:7px;
-  border-radius:50%;
-}
-
-.preview {
-  border:1px solid var(--border);
-  background:#0d111a;
-  border-radius:13px;
-  min-height:380px;
-  overflow:hidden;
-  position:relative;
-  transition:background .5s;
-}
-
-.preview-head {
-  height:43px;
-  padding:0 14px;
-  border-bottom:1px solid var(--border);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  font:10px 'DM Mono';
-  color:var(--muted);
-}
-
-.preview-dots {
-  display:flex;
-  gap:5px;
-}
-.preview-dots i {
-  width:6px;height:6px;
-  border-radius:50%;
-  background:#495366;
-}
-
-.preview-body {
-  padding:27px 23px;
-  min-height:330px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-
-.preview-kicker {
-  font:10px 'DM Mono';
-  color:var(--js);
-  margin-bottom:15px;
-}
-
-.preview-title {
-  font:700 clamp(25px,3vw,39px)/1.1 'Space Grotesk';
-  letter-spacing:-1.5px;
-  min-height:85px;
-}
-
-.preview-title span { color:var(--css); }
-
-.preview-desc {
-  color:var(--muted);
-  font-size:12px;
-  margin-top:15px;
-  max-width:340px;
-  line-height:1.7;
-}
-
-.preview-button {
-  margin-top:22px;
-  background:var(--css);
-  color:#090a12;
-  border-radius:5px;
-  padding:10px 14px;
-  width:max-content;
-  font-size:10px;
-  font-weight:700;
-  opacity:0;
-  transform:translateY(8px);
-  transition:.4s;
-}
-
-.preview-button.show {
-  opacity:1;
-  transform:translateY(0);
-}
-
-.preview-card {
-  margin-top:18px;
-  height:40px;
-  border:1px solid var(--border);
-  border-radius:6px;
-  opacity:0;
-  transition:.5s;
-}
-
-.preview-card.show { opacity:1; }
-
-.stage-footer {
-  grid-column:1/-1;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-top:2px;
-  gap:15px;
-}
-
-.stage-progress {
-  height:3px;
-  background:#202636;
-  flex:1;
-  border-radius:10px;
-  overflow:hidden;
-}
-
-.stage-progress div {
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,var(--html),var(--css),var(--js));
-}
-
-.stage-caption {
-  color:var(--muted);
-  font:10px 'DM Mono';
-}
-
-.cursor {
-  position:fixed;
-  z-index:200;
-  pointer-events:none;
-  font:11px 'DM Mono';
-  padding:5px 8px;
-  border-radius:3px;
-  color:#080a0f;
-  opacity:0;
-  transition:opacity .3s;
-  box-shadow:0 3px 15px #0008;
-  white-space:nowrap;
-}
-
-.cursor::before {
-  content:"";
-  position:absolute;
-  left:-2px;top:-2px;
-  width:8px;height:8px;
-  background:inherit;
-  clip-path:polygon(0 0,100% 50%,0 100%);
-  transform:rotate(-25deg);
-}
-
-.cursor.html { background:var(--html); }
-.cursor.css { background:var(--css); }
-.cursor.js { background:var(--js); }
-
-.cursor.active { opacity:1; }
-
-/* REAL PORTFOLIO */
-
-.portfolio {
-  padding:120px 0 100px;
-  border-top:1px solid var(--border);
-  background:
-    radial-gradient(ellipse at 70% 10%,rgba(105,95,255,.12),transparent 40%);
-}
-
-.portfolio-inner {
-  opacity:0;
-  transform:translateY(45px);
-  transition:1s;
-}
-
-.portfolio-inner.show {
-  opacity:1;
-  transform:translateY(0);
-}
-
-.final-label {
-  color:var(--js);
-  font:11px 'DM Mono';
-  letter-spacing:2px;
-}
-
-.final-title {
-  font:700 clamp(55px,10vw,110px)/1 'Space Grotesk';
-  letter-spacing:-6px;
-  margin:25px 0;
-}
-
-.final-title span { color:var(--css); }
-
-.final-desc {
-  color:var(--muted);
-  max-width:600px;
-  line-height:1.8;
-}
-
-.final-links {
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:30px;
-}
-
-.btn {
-  padding:12px 18px;
-  border:1px solid var(--border);
-  border-radius:6px;
-  font-size:12px;
-  font-weight:700;
-  transition:.3s;
-}
-.btn.primary {
-  background:var(--css);
-  color:#080a0f;
-  border-color:var(--css);
-}
-.btn:hover { transform:translateY(-4px); }
-
-.section {
-  padding:65px 0;
-  border-top:1px solid var(--border);
-}
-
-.section-heading {
-  font:700 clamp(30px,5vw,48px) 'Space Grotesk';
-  letter-spacing:-2px;
-  margin:12px 0 30px;
-}
-
-.label {
-  font:11px 'DM Mono';
-  color:var(--js);
-  letter-spacing:2px;
-}
-
-.about {
-  color:var(--muted);
-  max-width:720px;
-  line-height:1.9;
-}
-
-.cards {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
-}
-
-.card {
-  border:1px solid var(--border);
-  background:var(--panel);
-  padding:25px;
-  border-radius:10px;
-  transition:.3s;
-}
-.card:hover {
-  transform:translateY(-5px);
-  border-color:var(--css);
-}
-.card small {
-  color:var(--js);
-  font:10px 'DM Mono';
-}
-.card h3 {
-  font:600 20px 'Space Grotesk';
-  margin:12px 0 7px;
-}
-.card p {
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.7;
-}
-
-.skills {
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-.skill {
-  border:1px solid var(--border);
-  padding:10px 16px;
-  border-radius:5px;
-  color:#d4d9e4;
-  font:12px 'DM Mono';
-}
-
-.contact-box {
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:30px;
-}
-.contact-box p {
-  color:var(--muted);
-  margin:12px 0 22px;
-}
-.contact-links {
-  display:flex;
-  flex-wrap:wrap;
-  gap:20px;
-  color:var(--css);
-  font-size:13px;
-}
-
-footer {
-  padding:30px 0;
-  text-align:center;
-  color:var(--muted);
-  font:11px 'DM Mono';
-  border-top:1px solid var(--border);
-}
-
-@media(max-width:800px) {
-  .stage-grid { grid-template-columns:1fr; gap:12px; }
-  .sticky-stage { min-height:620px; }
-  .terminal { max-height:260px; }
-  .code-area { min-height:170px; padding:12px; }
-  .code-lines { min-height:120px; font-size:9px; }
-  .preview { min-height:260px; }
-  .preview-body { min-height:210px; padding:20px; }
-  .preview-title { min-height:45px; }
-  .stage-footer { grid-column:1; }
-  .cards { grid-template-columns:1fr; }
-  h1 { letter-spacing:-3px; }
-  .final-title { letter-spacing:-3px; }
-}
-
-@media(max-height:700px) and (min-width:801px) {
-  .sticky-stage { min-height:500px; }
-  .code-area { min-height:240px; }
-  .preview { min-height:310px; }
-}
-
-@media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after {
-    scroll-behavior:auto!important;
-    transition-duration:.01ms!important;
-    animation-duration:.01ms!important;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07110e">
+
+  <title>Thrishan Poojary | Developer & AI/ML Student</title>
+  <meta name="description" content="Personal website of Thrishan Poojary — AI & Machine Learning student, developer and entrepreneur.">
+  <meta name="author" content="Thrishan Poojary">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #07110e;
+      --bg-soft: #0b1712;
+      --card: #0e1d16;
+      --green: #a4f4bd;
+      --green-dark: #62c987;
+      --text: #edf5ef;
+      --muted: #91a49a;
+      --line: rgba(164,244,189,.13);
+      --mono: "DM Mono", monospace;
+      --sans: "DM Sans", sans-serif;
+      --display: "Space Grotesk", sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+      opacity: .12;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 48px));
+      margin: auto;
+    }
+
+    .mono {
+      font-family: var(--mono);
+    }
+
+    .green {
+      color: var(--green);
+    }
+
+    /* NAVIGATION */
+
+    .navbar {
+      height: 76px;
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      background: rgba(7,17,14,.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--display);
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 13px;
+      transition: .25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .nav-contact {
+      padding: 11px 18px;
+      border: 1px solid rgba(164,244,189,.4);
+      border-radius: 4px;
+      color: var(--green) !important;
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: none;
+      color: var(--green);
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 130px 0 90px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      right: -180px;
+      top: 10%;
+      background: radial-gradient(circle, rgba(67,190,112,.13), transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--green);
+      font: 12px var(--mono);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: var(--green);
+    }
+
+    .hero h1 {
+      font: 700 clamp(48px, 8vw, 100px)/.99 var(--display);
+      letter-spacing: -5px;
+      max-width: 900px;
+    }
+
+    .hero h1 span {
+      color: var(--green);
+    }
+
+    .hero-description {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+      margin-top: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 38px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: .25s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #07110e;
+    }
+
+    .btn-primary:hover {
+      background: #c3ffd2;
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--green);
+      color: var(--green);
+      transform: translateY(-3px);
+    }
+
+    .hero-bottom {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 75px;
+      color: var(--muted);
+      font: 11px var(--mono);
+      letter-spacing: 1px;
+    }
+
+    .availability {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .availability::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px var(--green);
+    }
+
+    /* GENERAL SECTIONS */
+
+    section {
+      position: relative;
+      padding: 115px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-label {
+      color: var(--green);
+      font: 12px var(--mono);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font: 600 clamp(34px, 5vw, 58px)/1.08 var(--display);
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 650px;
+      font-size: 15px;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      line-height: 2;
+      margin-bottom: 18px;
+      font-size: 15px;
+    }
+
+    .about-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .fact {
+      padding: 23px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      min-height: 115px;
+    }
+
+    .fact strong {
+      display: block;
+      font: 600 24px var(--display);
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+
+    .fact span {
+      font: 11px var(--mono);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* EDUCATION */
+
+    .education-list {
+      margin-top: 48px;
+      border-top: 1px solid var(--line);
+    }
+
+    .education-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 35px;
+      padding: 27px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .education-year {
+      color: var(--green);
+      font: 12px var(--mono);
+      padding-top: 5px;
+    }
+
+    .education-item h3 {
+      font: 600 20px var(--display);
+      margin-bottom: 7px;
+    }
+
+    .education-item p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* SKILLS */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 45px;
+    }
+
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 28px;
+      transition: .3s;
+    }
+
+    .skill-card:hover {
+      border-color: rgba(164,244,189,.5);
+      transform: translateY(-5px);
+    }
+
+    .skill-number {
+      color: var(--green);
+      font: 12px var(--mono);
+      margin-bottom: 30px;
+    }
+
+    .skill-card h3 {
+      font: 600 21px var(--display);
+      margin-bottom: 12px;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      color: var(--green);
+      padding: 7px 10px;
+      font: 10px var(--mono);
+      border-radius: 3px;
+    }
+
+    /* PROJECTS */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 45px;
+    }
+
+    .project-card {
+      padding: 30px;
+      min-height: 260px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: .3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(164,244,189,.5);
+    }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--green);
+      font: 11px var(--mono);
+    }
+
+    .project-card h3 {
+      font: 600 26px var(--display);
+      margin: 25px 0 12px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .project-link {
+      display: inline-block;
+      color: var(--green);
+      font: 12px var(--mono);
+      margin-top: 25px;
+    }
+
+    /* CONTACT */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 75px;
+      margin-top: 45px;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .contact-detail {
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-detail span {
+      display: block;
+      color: var(--muted);
+      font: 10px var(--mono);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .contact-detail a {
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .contact-detail a:hover {
+      color: var(--green);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--line);
+      color: var(--text);
+      padding: 16px;
+      outline: none;
+      border-radius: 3px;
+      font-size: 13px;
+      transition: .2s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--green-dark);
+    }
+
+    .contact-form textarea {
+      min-height: 145px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      border: 0;
+      align-self: flex-start;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner p {
+      color: var(--muted);
+      font: 11px var(--mono);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      font-size: 12px;
+      transition: .2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--green);
+    }
+
+    /* SCROLL ANIMATIONS */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: .1s; }
+    .delay-2 { transition-delay: .2s; }
+    .delay-3 { transition-delay: .3s; }
+
+    /* SCROLL PROGRESS */
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: var(--green);
+      z-index: 200;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 800px) {
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: #0b1712;
+        padding: 25px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 23px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .container {
+        width: min(100% - 34px, 1120px);
+      }
+
+      .hero h1 {
+        letter-spacing: -2.5px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      section {
+        padding: 85px 0;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .education-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .about-facts {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-bottom {
+        margin-top: 50px;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div id="progress"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
 
-<header>
-  <div class="container nav">
-    <a href="#" class="brand">THRISHAN<span>.</span></a>
-    <div class="nav-status">
-      <span class="dot"></span>
-      SYSTEM BUILDING
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="logo">THRISHAN<span>.</span></a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact" class="nav-contact">Let's talk ↗</a></li>
+      </ul>
     </div>
-  </div>
-</header>
+  </header>
 
-<div class="cursor html" id="cursorHTML">HTML</div>
-<div class="cursor css" id="cursorCSS">CSS</div>
-<div class="cursor js" id="cursorJS">JS</div>
+  <main>
 
-<section class="intro">
-  <div class="container">
-    <div class="eyebrow">AN INTERACTIVE PORTFOLIO EXPERIENCE</div>
-    <h1>Some websites<br>are designed.<br><span>This one builds itself.</span></h1>
-    <p>
-      Three cursors. Three languages. One website.
-      Scroll down and watch the structure, design and functionality
-      come together, line by line.
-    </p>
-    <div class="scroll-note">
-      <div class="scroll-line"></div>
-      SCROLL TO START THE BUILD
-    </div>
-  </div>
-</section>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">AI & ML Student · Developer · Entrepreneur</div>
 
-<section class="build-section" id="build">
-  <div class="sticky-stage">
-    <div class="container stage-grid">
+          <h1>
+            Building ideas<br>
+            into <span>reality.</span>
+          </h1>
 
-      <div class="terminal">
-        <div class="terminal-head">
-          <div class="traffic"><i></i><i></i><i></i></div>
-          <span>thrishan.dev — workspace</span>
-          <span>● LIVE</span>
-        </div>
-        <div class="tabs">
-          <div class="tab active" id="htmlTab">index.html</div>
-          <div class="tab" id="cssTab">style.css</div>
-          <div class="tab" id="jsTab">script.js</div>
-        </div>
-        <div class="code-area">
-          <div class="cursor-label" id="coderLabel">
-            <b style="background:var(--html)"></b>
-            <span style="color:var(--html)">HTML ENGINE</span>
+          <p class="hero-description">
+            I'm Thrishan Poojary, an Artificial Intelligence and Machine Learning
+            engineering student interested in technology, software development,
+            entrepreneurship and creating things that make a difference.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">Explore my work ↗</a>
+            <a href="#contact" class="btn btn-outline">Get in touch</a>
           </div>
-          <div class="code-lines" id="code">
-            <span class="dim">// Waiting for scroll input...</span>
+
+          <div class="hero-bottom">
+            <div class="availability">OPEN TO LEARNING & COLLABORATION</div>
+            <span>BASED IN INDIA</span>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="preview">
-        <div class="preview-head">
-          <span>LIVE PREVIEW</span>
-          <div class="preview-dots"><i></i><i></i><i></i></div>
-          <span id="previewStatus">EMPTY PAGE</span>
-        </div>
-        <div class="preview-body" id="previewBody">
-          <div class="preview-kicker" id="previewKicker">INITIALIZING...</div>
-          <div class="preview-title" id="previewTitle">Your page<br>starts here.</div>
-          <div class="preview-desc" id="previewDesc">
-            Scroll to watch the website come to life.
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <div class="section-label">01 / About me</div>
+            <h2 class="section-title">Curious mind.<br><span class="green">Builder's mindset.</span></h2>
+
+            <p>
+              I'm currently pursuing a Bachelor of Engineering in Artificial
+              Intelligence and Machine Learning at Mangalore Institute of
+              Technology & Engineering (MITE).
+            </p>
+
+            <p>
+              I enjoy exploring how technology works, learning programming,
+              experimenting with AI and turning ideas into practical projects.
+              I'm also interested in business, e-commerce and entrepreneurship.
+            </p>
+
+            <p>
+              I believe in learning by building. Every project is an opportunity
+              to understand something new and improve my skills.
+            </p>
           </div>
-          <div class="preview-button" id="previewButton">EXPLORE MORE ↗</div>
-          <div class="preview-card" id="previewCard"></div>
-        </div>
-      </div>
 
-      <div class="stage-footer">
-        <span class="stage-caption" id="stageCaption">01 / STRUCTURE</span>
-        <div class="stage-progress"><div id="stageBar"></div></div>
-        <span class="stage-caption" id="stagePercent">0%</span>
-      </div>
+          <div class="about-facts reveal delay-2">
+            <div class="fact">
+              <strong>AI/ML</strong>
+              <span>Engineering</span>
+            </div>
 
-    </div>
-  </div>
-</section>
+            <div class="fact">
+              <strong>03</strong>
+              <span>Programming languages</span>
+            </div>
 
-<main class="portfolio" id="portfolio">
-  <div class="container portfolio-inner" id="portfolioInner">
+            <div class="fact">
+              <strong>04</strong>
+              <span>Spoken languages</span>
+            </div>
 
-    <div class="final-label">BUILD COMPLETE / WELCOME</div>
-    <h2 class="final-title">THRISHAN<span>.</span></h2>
-    <p class="final-desc">
-      I'm Thrishan Poojary, an Artificial Intelligence and
-      Machine Learning engineering student interested in technology,
-      programming, entrepreneurship and creating useful things.
-    </p>
-
-    <div class="final-links">
-      <a class="btn primary" href="#projects">EXPLORE MY WORK</a>
-      <a class="btn" href="#contact">CONTACT ME</a>
-    </div>
-
-    <section class="section" id="about">
-      <div class="label">01 / ABOUT</div>
-      <h2 class="section-heading">Curiosity drives everything.</h2>
-      <p class="about">
-        I am pursuing B.E. in Artificial Intelligence and Machine
-        Learning at Mangalore Institute of Technology & Engineering.
-        I enjoy learning how technology works, experimenting with
-        ideas and turning concepts into practical projects.
-        My interests include software development, AI, business
-        and problem-solving.
-      </p>
-    </section>
-
-    <section class="section" id="education">
-      <div class="label">02 / EDUCATION</div>
-      <h2 class="section-heading">My journey so far.</h2>
-      <div class="cards">
-        <article class="card">
-          <small>LKG – 7TH STANDARD</small>
-          <h3>Mount Carmel School</h3>
-          <p>Shirthady</p>
-        </article>
-        <article class="card">
-          <small>8TH – 10TH STANDARD</small>
-          <h3>Government High School</h3>
-          <p>Aliyoor</p>
-        </article>
-        <article class="card">
-          <small>1ST & 2ND PUC</small>
-          <h3>Rotary PU College</h3>
-          <p>Moodubidri</p>
-        </article>
-        <article class="card">
-          <small>3RD SEMESTER — CURRENT</small>
-          <h3>B.E. Artificial Intelligence & ML</h3>
-          <p>MITE — Mangalore Institute of Technology & Engineering, Moodbidri</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="skills">
-      <div class="label">03 / SKILLS</div>
-      <h2 class="section-heading">Tools of my trade.</h2>
-      <div class="skills">
-        <span class="skill">C</span>
-        <span class="skill">C++</span>
-        <span class="skill">Python</span>
-      </div>
-      <h3 style="margin:35px 0 15px;font-family:'Space Grotesk'">Languages</h3>
-      <div class="skills">
-        <span class="skill">Tulu</span>
-        <span class="skill">Kannada</span>
-        <span class="skill">English</span>
-        <span class="skill">Hindi</span>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
-      <div class="label">04 / PROJECTS & INTERESTS</div>
-      <h2 class="section-heading">Ideas into action.</h2>
-      <div class="cards">
-        <article class="card">
-          <small>ENTREPRENEURSHIP</small>
-          <h3>SlateDrop</h3>
-          <p>Exploring e-commerce, product selection, branding, online stores and digital marketing.</p>
-          <a href="https://github.com/ThrishanPoojary/SLATEDROP" target="_blank" rel="noopener" style="color:var(--css);display:inline-block;margin-top:15px;font-size:12px">VIEW GITHUB ↗</a>
-        </article>
-        <article class="card">
-          <small>PROGRAMMING</small>
-          <h3>C & C++ Projects</h3>
-          <p>Building programming fundamentals through small applications and problem-solving exercises.</p>
-        </article>
-        <article class="card">
-          <small>ARTIFICIAL INTELLIGENCE</small>
-          <h3>AI & Machine Learning</h3>
-          <p>Exploring intelligent systems, machine learning concepts and practical AI applications.</p>
-        </article>
-        <article class="card">
-          <small>CONTINUOUS LEARNING</small>
-          <h3>What's Next?</h3>
-          <p>Developing technical skills and working towards projects that solve real-world problems.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="label">05 / CONTACT</div>
-      <h2 class="section-heading">Let's connect.</h2>
-      <div class="contact-box">
-        <h3 style="font-family:'Space Grotesk';font-size:23px">Have an idea?</h3>
-        <p>Let's talk about technology, projects or opportunities.</p>
-        <div class="contact-links">
-          <a href="mailto:thrishan208@gmail.com">EMAIL ↗</a>
-          <a href="https://www.instagram.com/thrishan_poojary_j/" target="_blank" rel="noopener">INSTAGRAM ↗</a>
-          <a href="https://github.com/ThrishanPoojary" target="_blank" rel="noopener">GITHUB ↗</a>
+            <div class="fact">
+              <strong>∞</strong>
+              <span>Ideas to explore</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-  </div>
-</main>
 
-<footer>
-  <div class="container">
-    © <span id="year"></span> THRISHAN POOJARY · BUILT WITH CURIOSITY
-  </div>
-</footer>
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-label">02 / Education</div>
+          <h2 class="section-title">My learning journey.</h2>
+          <p class="section-description">
+            Every stage has been part of the journey that brought me here.
+          </p>
+        </div>
 
-<script>
-const $ = id => document.getElementById(id);
+        <div class="education-list">
+          <div class="education-item reveal">
+            <div class="education-year">CURRENT</div>
+            <div>
+              <h3>B.E. — Artificial Intelligence & Machine Learning</h3>
+              <p>Mangalore Institute of Technology & Engineering (MITE), Moodbidri</p>
+              <p>Currently in 3rd semester</p>
+            </div>
+          </div>
 
-const code = $("code");
-const label = $("coderLabel");
-const title = $("previewTitle");
-const desc = $("previewDesc");
-const kicker = $("previewKicker");
-const button = $("previewButton");
-const previewCard = $("previewCard");
-const status = $("previewStatus");
-const stageBar = $("stageBar");
-const caption = $("stageCaption");
-const percentText = $("stagePercent");
+          <div class="education-item reveal">
+            <div class="education-year">PUC</div>
+            <div>
+              <h3>Pre-University Education</h3>
+              <p>Rotary Pre-University College, Moodbidri</p>
+              <p>1st and 2nd PUC</p>
+            </div>
+          </div>
 
-const htmlCursor = $("cursorHTML");
-const cssCursor = $("cursorCSS");
-const jsCursor = $("cursorJS");
+          <div class="education-item reveal">
+            <div class="education-year">HIGH SCHOOL</div>
+            <div>
+              <h3>Secondary Education</h3>
+              <p>Government High School, Aliyoor</p>
+              <p>8th to 10th standard</p>
+            </div>
+          </div>
 
-const htmlCode = [
-  '<span class="dim">&lt;!-- Building the structure --&gt;</span>',
-  '<span class="orange">&lt;!DOCTYPE html&gt;</span>',
-  '<span class="orange">&lt;html&gt;</span>',
-  '  <span class="orange">&lt;head&gt;</span>',
-  '    <span class="orange">&lt;title&gt;</span>Thrishan<span class="orange">&lt;/title&gt;</span>',
-  '  <span class="orange">&lt;/head&gt;</span>',
-  '  <span class="orange">&lt;body&gt;</span>',
-  '    <span class="orange">&lt;header&gt;</span>',
-  '      <span class="blue">THRISHAN.</span>',
-  '    <span class="orange">&lt;/header&gt;</span>',
-  '    <span class="orange">&lt;main&gt;</span>',
-  '      <span class="orange">&lt;h1&gt;</span>Curious mind<span class="orange">&lt;/h1&gt;</span>',
-  '      <span class="orange">&lt;p&gt;</span>Building ideas<span class="orange">&lt;/p&gt;</span>',
-  '    <span class="orange">&lt;/main&gt;</span>',
-  '  <span class="orange">&lt;/body&gt;</span>',
-  '<span class="orange">&lt;/html&gt;</span>'
-];
+          <div class="education-item reveal">
+            <div class="education-year">FOUNDATION</div>
+            <div>
+              <h3>Primary Education</h3>
+              <p>Mount Carmel School, Shirthady</p>
+              <p>LKG to 7th standard</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-const cssCode = [
-  '<span class="dim">/* Giving it a personality */</span>',
-  '<span class="purple">:root</span> {',
-  '  <span class="blue">--background</span>: #080a0f;',
-  '  <span class="blue">--accent</span>: #8d83ff;',
-  '}',
-  '<span class="purple">body</span> {',
-  '  background: var(--background);',
-  '  color: #f4f5fa;',
-  '  font-family: sans-serif;',
-  '}',
-  '<span class="purple">h1</span> {',
-  '  font-size: clamp(48px, 8vw, 100px);',
-  '  letter-spacing: -5px;',
-  '  font-weight: 800;',
-  '}',
-  '<span class="purple">.portfolio</span> {',
-  '  padding: 100px 0;',
-  '  opacity: 1;',
-  '}'
-];
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-label">03 / Skills</div>
+          <h2 class="section-title">What I'm learning.</h2>
+          <p class="section-description">
+            My current technical foundation and areas of interest.
+          </p>
+        </div>
 
-const jsCode = [
-  '<span class="dim">// Bringing the page to life</span>',
-  '<span class="green">const</span> portfolio = {',
-  '  creator: <span class="blue">"Thrishan"</span>,',
-  '  status: <span class="blue">"building"</span>,',
-  '  creativity: <span class="blue">true</span>',
-  '};',
-  '',
-  '<span class="green">function</span> createExperience() {',
-  '  revealSections();',
-  '  animateElements();',
-  '  activateInteractions();',
-  '}',
-  '',
-  '<span class="green">window</span>.addEventListener(',
-  '  <span class="blue">"scroll"</span>, createExperience',
-  ');',
-  '',
-  '<span class="green">createExperience</span>();',
-  '<span class="dim">// Website complete ✓</span>'
-];
+        <div class="skills-grid">
+          <div class="skill-card reveal">
+            <div class="skill-number">01 / PROGRAMMING</div>
+            <h3>Programming</h3>
+            <p>Building a foundation in programming and problem solving.</p>
+            <div class="skill-tags">
+              <span class="tag">C</span>
+              <span class="tag">C++</span>
+              <span class="tag">Python</span>
+            </div>
+          </div>
 
-function renderCode(lines, progress) {
-  const count = Math.max(1, Math.ceil(lines.length * progress));
-  code.innerHTML = lines.slice(0, count).join("\n");
-}
+          <div class="skill-card reveal delay-1">
+            <div class="skill-number">02 / TECHNOLOGY</div>
+            <h3>AI & Machine Learning</h3>
+            <p>Exploring artificial intelligence, machine learning and their practical applications.</p>
+            <div class="skill-tags">
+              <span class="tag">AI</span>
+              <span class="tag">ML</span>
+              <span class="tag">Learning</span>
+            </div>
+          </div>
 
-function cursorMove(el, x, y) {
-  el.style.left = x + "px";
-  el.style.top = y + "px";
-  el.classList.add("active");
-}
+          <div class="skill-card reveal delay-2">
+            <div class="skill-number">03 / BUSINESS</div>
+            <h3>Entrepreneurship</h3>
+            <p>Interested in building online businesses, e-commerce and digital products.</p>
+            <div class="skill-tags">
+              <span class="tag">E-commerce</span>
+              <span class="tag">Shopify</span>
+              <span class="tag">Business</span>
+            </div>
+          </div>
 
-function hideCursors() {
-  [htmlCursor,cssCursor,jsCursor].forEach(c => c.classList.remove("active"));
-}
+          <div class="skill-card reveal">
+            <div class="skill-number">04 / COMMUNICATION</div>
+            <h3>Languages</h3>
+            <p>Comfortable communicating in multiple languages.</p>
+            <div class="skill-tags">
+              <span class="tag">Tulu</span>
+              <span class="tag">Kannada</span>
+              <span class="tag">English</span>
+              <span class="tag">Hindi</span>
+            </div>
+          </div>
 
-function update() {
-  const section = $("build");
-  const rect = section.getBoundingClientRect();
-  const total = section.offsetHeight - window.innerHeight;
-  const raw = -rect.top / total;
-  const p = Math.max(0, Math.min(1, raw));
+          <div class="skill-card reveal delay-1">
+            <div class="skill-number">05 / CREATIVE</div>
+            <h3>Creative Thinking</h3>
+            <p>Enjoying experimentation, problem solving and exploring new ideas.</p>
+            <div class="skill-tags">
+              <span class="tag">Ideas</span>
+              <span class="tag">Research</span>
+              <span class="tag">Experimentation</span>
+            </div>
+          </div>
 
-  stageBar.style.width = (p * 100) + "%";
-  percentText.textContent = Math.round(p * 100) + "%";
+          <div class="skill-card reveal delay-2">
+            <div class="skill-number">06 / DEVELOPMENT</div>
+            <h3>Web Development</h3>
+            <p>Exploring website development and building digital experiences.</p>
+            <div class="skill-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  let lines, name, color, phase;
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-label">04 / Projects</div>
+          <h2 class="section-title">Things I've worked on.</h2>
+          <p class="section-description">
+            A collection of experiments, ideas and projects.
+          </p>
+        </div>
 
-  if (p < .34) {
-    phase = p / .34;
-    lines = htmlCode;
-    name = "HTML ENGINE";
-    color = "var(--html)";
-    $("htmlTab").classList.add("active");
-    $("cssTab").classList.remove("active");
-    $("jsTab").classList.remove("active");
-    caption.textContent = "01 / STRUCTURE";
-    kicker.textContent = "STRUCTURE INITIALIZED";
-    title.innerHTML = "A page is<br><span>taking shape.</span>";
-    desc.textContent = "The foundation is being written. Every great experience starts with structure.";
-    status.textContent = "HTML / BUILDING";
-    button.classList.remove("show");
-    previewCard.classList.remove("show");
-  } else if (p < .68) {
-    phase = (p - .34) / .34;
-    lines = cssCode;
-    name = "CSS DESIGNER";
-    color = "var(--css)";
-    $("htmlTab").classList.remove("active");
-    $("cssTab").classList.add("active");
-    $("jsTab").classList.remove("active");
-    caption.textContent = "02 / DESIGN";
-    kicker.textContent = "VISUAL IDENTITY";
-    title.innerHTML = "Now it gets<br><span>a personality.</span>";
-    desc.textContent = "Colors, typography and spacing turn the structure into a visual experience.";
-    status.textContent = "CSS / STYLING";
-    button.classList.remove("show");
-    previewCard.classList.add("show");
-  } else {
-    phase = (p - .68) / .32;
-    lines = jsCode;
-    name = "JS DEVELOPER";
-    color = "var(--js)";
-    $("htmlTab").classList.remove("active");
-    $("cssTab").classList.remove("active");
-    $("jsTab").classList.add("active");
-    caption.textContent = "03 / INTERACTION";
-    kicker.textContent = "FUNCTIONALITY ACTIVATED";
-    title.innerHTML = "It is alive.<br><span>Ready to explore.</span>";
-    desc.textContent = "The interactions are connected. The portfolio is ready.";
-    status.textContent = "JS / COMPLETE";
-    button.classList.add("show");
-    previewCard.classList.add("show");
-  }
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <div class="project-top">
+              <span>PROJECT / 01</span>
+              <span>↗</span>
+            </div>
+            <div>
+              <h3>SlateDrop</h3>
+              <p>
+                An e-commerce project exploring online product presentation,
+                branding and digital business.
+              </p>
+              <a class="project-link"
+                 href="https://github.com/ThrishanPoojary/SLATEDROP"
+                 target="_blank" rel="noopener noreferrer">
+                VIEW ON GITHUB ↗
+              </a>
+            </div>
+          </article>
 
-  label.innerHTML = `<b style="background:${color}"></b><span style="color:${color}">${name}</span>`;
-  renderCode(lines,phase);
+          <article class="project-card reveal delay-1">
+            <div class="project-top">
+              <span>PROJECT / 02</span>
+              <span>↗</span>
+            </div>
+            <div>
+              <h3>AI & ML Experiments</h3>
+              <p>
+                Exploring AI and machine learning concepts, practical applications
+                and ideas for future projects.
+              </p>
+              <span class="project-link">MORE COMING SOON</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  const x = window.innerWidth * (.25 + .5 * phase);
-  const y = window.innerHeight * (.35 + .2 * Math.sin(p * 12));
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-label">05 / Contact</div>
+          <h2 class="section-title">Have an idea?<br><span class="green">Let's connect.</span></h2>
+          <p class="section-description">
+            Interested in collaborating, discussing technology or building
+            something interesting? Send me a message.
+          </p>
+        </div>
 
-  hideCursors();
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <p>
+              I'm open to meaningful conversations, learning opportunities
+              and interesting collaborations.
+            </p>
 
-  if (p < .34) cursorMove(htmlCursor,x,y);
-  else if (p < .68) cursorMove(cssCursor,x,y);
-  else cursorMove(jsCursor,x,y);
+            <div class="contact-detail">
+              <span>Email</span>
+              <a href="mailto:thrishan208@gmail.com">thrishan208@gmail.com</a>
+            </div>
 
-  const inner = $("portfolioInner");
-  const portfolioRect = $("portfolio").getBoundingClientRect();
+            <div class="contact-detail">
+              <span>Instagram</span>
+              <a href="https://www.instagram.com/thrishan_poojary_j/"
+                 target="_blank" rel="noopener noreferrer">
+                @thrishan_poojary_j ↗
+              </a>
+            </div>
 
-  if (portfolioRect.top < window.innerHeight * .75) {
-    inner.classList.add("show");
-  }
-}
+            <div class="contact-detail">
+              <span>GitHub</span>
+              <a href="https://github.com/ThrishanPoojary"
+                 target="_blank" rel="noopener noreferrer">
+                github.com/ThrishanPoojary ↗
+              </a>
+            </div>
+          </div>
 
-let ticking = false;
+          <form class="contact-form reveal delay-1"
+                action="https://api.web3forms.com/submit"
+                method="POST">
 
-function onScroll() {
-  if (!ticking) {
-    window.requestAnimationFrame(() => {
-      update();
-      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-      $("progress").style.width =
-        (scrollable > 0 ? window.scrollY / scrollable * 100 : 0) + "%";
-      ticking = false;
+            <!-- Replace this with your actual Web3Forms access key -->
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+
+            <input type="hidden" name="subject" value="New message from thrishan.tech">
+            <input type="hidden" name="from_name" value="Thrishan Portfolio">
+            <input type="hidden" name="redirect" value="https://thrishan.tech/thanku.html">
+
+            <input type="checkbox" name="botcheck" style="display:none">
+
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Your email address" required>
+            <input type="text" name="message_subject" placeholder="Subject">
+            <textarea name="message" placeholder="Tell me about your idea..." required></textarea>
+
+            <button type="submit" class="btn btn-primary">
+              Send message ↗
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> THRISHAN POOJARY. ALL RIGHTS RESERVED.</p>
+
+      <div class="footer-links">
+        <a href="#home">Back to top ↑</a>
+        <a href="https://github.com/ThrishanPoojary" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.instagram.com/thrishan_poojary_j/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // MOBILE NAVIGATION
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", isOpen);
+      menuBtn.textContent = isOpen ? "✕" : "☰";
     });
-    ticking = true;
-  }
-}
 
-window.addEventListener("scroll",onScroll,{passive:true});
-window.addEventListener("resize",update);
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.textContent = "☰";
+      });
+    });
 
-$("year").textContent = new Date().getFullYear();
-update();
-</script>
+    // SCROLL REVEAL ANIMATION
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    document.querySelectorAll(".reveal").forEach(element => {
+      revealObserver.observe(element);
+    });
+
+    // SCROLL PROGRESS BAR
+    const progressBar = document.getElementById("scrollProgress");
+
+    window.addEventListener("scroll", () => {
+      const scrollable =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      const progress = scrollable > 0
+        ? (window.scrollY / scrollable) * 100
+        : 0;
+
+      progressBar.style.width = progress + "%";
+    }, { passive: true });
+
+    // AUTOMATIC FOOTER YEAR
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
