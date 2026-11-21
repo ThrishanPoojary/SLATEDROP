@@ -1,941 +1,395 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#090d0b">
-<meta name="description" content="Thrishan Poojary — B.E. Artificial Intelligence and Machine Learning student, technology enthusiast and builder.">
-<title>Thrishan Poojary | thrishan.tech</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --bg:#090d0b;
-  --surface:#111914;
-  --text:#edf5ef;
-  --muted:#9aa99e;
-  --green:#a3f36b;
-  --line:rgba(211,235,218,.11);
-  --mono:'DM Mono',monospace;
-  --sans:'Manrope',sans-serif;
-}
-
-*{box-sizing:border-box}
-
-html{
- scroll-behavior:smooth;
- scroll-padding-top:85px;
-}
-
-body{
- margin:0;
- background:var(--bg);
- color:var(--text);
- font-family:var(--sans);
- line-height:1.7;
- background-image:radial-gradient(ellipse at 80% 0%,rgba(112,205,82,.09),transparent 35%);
-}
-
-a{text-decoration:none;color:inherit}
-
-.container{
- width:min(1160px,calc(100% - 40px));
- margin:auto;
-}
-
-.eyebrow{
- color:var(--green);
- font:12px var(--mono);
- letter-spacing:2px;
-}
-
-.accent{color:var(--green)}
-.muted{color:var(--muted)}
-
-header{
- position:fixed;
- top:0;
- width:100%;
- z-index:100;
- border-bottom:1px solid transparent;
- transition:.3s;
-}
-
-header.scrolled{
- background:rgba(9,13,11,.92);
- backdrop-filter:blur(15px);
- border-color:var(--line);
-}
-
-nav{
- height:75px;
- display:flex;
- justify-content:space-between;
- align-items:center;
-}
-
-.logo{
- font-size:24px;
- font-weight:800;
- letter-spacing:-2px;
-}
-
-.logo span{color:var(--green)}
-
-.navlinks{
- display:flex;
- align-items:center;
- gap:30px;
-}
-
-.navlinks a{
- font-size:13px;
- color:#bdc9c0;
- font-weight:700;
-}
-
-.navlinks a:hover{color:var(--green)}
-
-.navbtn,.btn{
- display:inline-flex;
- align-items:center;
- justify-content:center;
- padding:12px 18px;
- border-radius:8px;
- border:1px solid rgba(163,243,107,.35);
- color:var(--green);
- font-size:13px;
- font-weight:800;
- transition:.25s;
-}
-
-.btn.primary{
- background:var(--green);
- color:#10170f;
- border-color:var(--green);
-}
-
-/* AI ROBOT BUTTON */
-.robot-btn{
- background:linear-gradient(110deg,rgba(163,243,107,.10),transparent);
- border-color:rgba(163,243,107,.75);
- box-shadow:inset 0 0 18px rgba(163,243,107,.05);
-}
-
-.robot-btn:hover{
- box-shadow:0 0 24px rgba(163,243,107,.18);
-}
-
-.btn:hover,.navbtn:hover{
- background:var(--green);
- color:#10170f;
- transform:translateY(-2px);
-}
-
-.menu{
- display:none;
- background:transparent;
- color:white;
- border:1px solid var(--line);
- padding:9px;
- border-radius:7px;
-}
-
-.hero{
- min-height:750px;
- display:flex;
- align-items:center;
- padding:140px 0 90px;
-}
-
-.hero-grid{
- display:grid;
- grid-template-columns:1.2fr .8fr;
- gap:50px;
- align-items:center;
-}
-
-.availability{
- display:inline-flex;
- align-items:center;
- gap:10px;
- border:1px solid var(--line);
- padding:8px 13px;
- border-radius:50px;
- font:11px var(--mono);
- margin-bottom:25px;
- color:#c3d1c7;
-}
-
-.dot{
- width:8px;
- height:8px;
- border-radius:50%;
- background:var(--green);
- box-shadow:0 0 12px var(--green);
-}
-
-h1{
- font-size:clamp(48px,7vw,88px);
- line-height:1.05;
- letter-spacing:-6px;
- margin:15px 0 25px;
-}
-
-.outline{
- color:transparent;
- -webkit-text-stroke:1px #edf5ef;
-}
-
-.hero-copy{
- max-width:570px;
- color:var(--muted);
- font-size:15px;
- line-height:2;
-}
-
-.actions{
- display:flex;
- gap:13px;
- flex-wrap:wrap;
- margin-top:30px;
-}
-
-.hero-meta{
- display:flex;
- gap:25px;
- margin-top:45px;
- flex-wrap:wrap;
-}
-
-.meta{
- border-left:1px solid var(--line);
- padding-left:13px;
-}
-
-.meta strong{
- display:block;
- font-size:13px;
-}
-
-.meta span{
- font:10px var(--mono);
- color:var(--muted);
-}
-
-.hero-art{
- display:grid;
- place-items:center;
- min-height:390px;
-}
-
-.orbit{
- width:320px;
- aspect-ratio:1;
- border:1px solid rgba(163,243,107,.2);
- border-radius:50%;
- display:grid;
- place-items:center;
- position:relative;
-}
-
-.orbit:before,.orbit:after{
- content:"";
- position:absolute;
- border:1px solid rgba(163,243,107,.13);
- border-radius:50%;
-}
-
-.orbit:before{inset:25px}
-.orbit:after{inset:55px}
-
-.monogram{
- width:160px;
- height:160px;
- border-radius:35px;
- transform:rotate(-8deg);
- display:grid;
- place-items:center;
- font-size:58px;
- font-weight:800;
- color:#10200e;
- background:linear-gradient(145deg,#c5ff91,#6fcf57);
- box-shadow:0 20px 90px rgba(111,207,87,.2);
- z-index:2;
-}
-
-.orbit-label{
- position:absolute;
- background:#111a14;
- border:1px solid var(--line);
- padding:8px 11px;
- border-radius:7px;
- font:10px var(--mono);
- z-index:3;
-}
-
-.l1{top:30px;right:-10px}
-.l2{bottom:45px;left:-15px}
-.l3{bottom:0;right:45px}
-
-section{
- padding:100px 0;
- border-top:1px solid var(--line);
-}
-
-.section-head{margin-bottom:45px}
-
-h2{
- font-size:clamp(32px,4vw,48px);
- line-height:1.15;
- letter-spacing:-3px;
- margin:10px 0;
-}
-
-.intro{
- max-width:430px;
- color:var(--muted);
- font-size:13px;
-}
-
-.about-grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:65px;
-}
-
-.about-text{
- color:var(--muted);
- font-size:14px;
- line-height:2;
-}
-
-.info-card,.card,.edu-card,.skill-group{
- background:rgba(17,25,20,.8);
- border:1px solid var(--line);
- border-radius:13px;
- padding:23px;
-}
-
-.info-row{
- display:flex;
- justify-content:space-between;
- gap:15px;
- padding:13px 0;
- border-bottom:1px solid var(--line);
- font-size:12px;
-}
-
-.info-row:last-child{border:0}
-.info-row span:first-child{color:var(--muted)}
-.info-row span:last-child{text-align:right;font-weight:700}
-
-.cards{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:16px;
-}
-
-.card{
- transition:.25s;
- min-height:225px;
-}
-
-.card:hover,.edu-card:hover{
- transform:translateY(-5px);
- border-color:rgba(163,243,107,.4);
-}
-
-.card-icon{
- color:var(--green);
- font-size:25px;
- margin-bottom:25px;
-}
-
-.card small{
- font:10px var(--mono);
- color:var(--green);
-}
-
-.card h3,.edu-card h3{
- font-size:17px;
- margin:10px 0;
-}
-
-.card p,.edu-card p{
- color:var(--muted);
- font-size:12px;
- line-height:1.8;
-}
-
-.card-link{
- color:var(--green);
- font:10px var(--mono);
-}
-
-.skills-grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:15px;
-}
-
-.skill-group h3{
- color:var(--green);
- font:11px var(--mono);
- letter-spacing:1px;
- text-transform:uppercase;
-}
-
-.tags{
- display:flex;
- flex-wrap:wrap;
- gap:8px;
-}
-
-.tag{
- padding:7px 10px;
- border:1px solid var(--line);
- border-radius:6px;
- color:#c7d3ca;
- font-size:11px;
-}
-
-.education{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:16px;
-}
-
-.edu-card{transition:.25s}
-
-.edu-card .year{
- font:10px var(--mono);
- color:var(--green);
- letter-spacing:1px;
-}
-
-.contact-panel{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:50px;
- padding:45px;
- border:1px solid rgba(163,243,107,.2);
- border-radius:17px;
- background:radial-gradient(circle at 0 0,rgba(163,243,107,.1),transparent 45%),#111914;
-}
-
-.socials{
- display:flex;
- flex-wrap:wrap;
- gap:10px;
- margin-top:25px;
-}
-
-.socials a{
- padding:9px 12px;
- border:1px solid var(--line);
- border-radius:7px;
- font:10px var(--mono);
- color:#c6d2c9;
-}
-
-.socials a:hover{
- color:var(--green);
- border-color:var(--green);
-}
-
-.contact-form{
- display:grid;
- gap:12px;
-}
-
-.contact-form input,.contact-form textarea{
- width:100%;
- background:#0a100c;
- border:1px solid var(--line);
- border-radius:8px;
- padding:14px;
- color:white;
- outline:none;
- font:12px var(--sans);
-}
-
-.contact-form input:focus,.contact-form textarea:focus{
- border-color:var(--green);
-}
-
-.contact-form textarea{
- min-height:120px;
- resize:vertical;
-}
-
-.contact-form button{
- cursor:pointer;
- justify-self:start;
-}
-
-footer{
- padding:30px 0;
- border-top:1px solid var(--line);
- color:#718077;
- font:10px var(--mono);
-}
-
-.footer-inner{
- display:flex;
- justify-content:space-between;
- gap:15px;
- flex-wrap:wrap;
-}
-
-footer a{color:var(--green)}
-
-.reveal{
- opacity:0;
- transform:translateY(20px);
- transition:.7s;
-}
-
-.reveal.visible{
- opacity:1;
- transform:none;
-}
-
-@media(max-width:850px){
- .hero-grid,.about-grid,.contact-panel{
-  grid-template-columns:1fr;
- }
-
- .hero-art{min-height:330px}
- .cards{grid-template-columns:1fr 1fr}
-}
-
-@media(max-width:600px){
- .navlinks{
-  display:none;
-  position:absolute;
-  top:75px;
-  left:0;
-  width:100%;
-  padding:25px;
-  background:#0d140f;
-  flex-direction:column;
-  align-items:stretch;
- }
-
- .navlinks.open{display:flex}
- .menu{display:block}
- .hero{padding-top:120px;min-height:auto}
- h1{letter-spacing:-3px}
- .orbit{width:260px}
- .monogram{width:130px;height:130px;font-size:45px}
- section{padding:75px 0}
- .cards,.education,.skills-grid{grid-template-columns:1fr}
- .contact-panel{padding:25px}
- .hero-meta{gap:15px}
- .footer-inner{
-  flex-direction:column;
-  text-align:center;
- }
-}
-
-@media(prefers-reduced-motion:reduce){
- *,*::before,*::after{
-  scroll-behavior:auto!important;
-  transition:none!important;
- }
-
- .reveal{
-  opacity:1;
-  transform:none;
- }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090d0b">
+  <meta name="description" content="Thrishan Poojary — B.E. Artificial Intelligence & Machine Learning student, technology enthusiast and builder.">
+  <meta property="og:title" content="Thrishan Poojary | Portfolio">
+  <meta property="og:description" content="Engineering student. Tech enthusiast. Building what's next.">
+  <meta property="og:type" content="website">
+  <title>Thrishan Poojary — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d0b;
+      --surface: #101713;
+      --surface-2: #141e18;
+      --text: #edf5ef;
+      --muted: #9aa99e;
+      --line: rgba(211, 235, 218, .11);
+      --green: #a3f36b;
+      --green-2: #6fce55;
+      --max: 1160px;
+      --mono: "DM Mono", monospace;
+      --sans: "Manrope", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans);
+      line-height: 1.65; overflow-x: hidden;
+      background-image: radial-gradient(ellipse at 78% 0%, rgba(112, 205, 82, .09), transparent 34%),
+                        radial-gradient(ellipse at 0% 42%, rgba(112, 205, 82, .045), transparent 28%);
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    ::selection { background: rgba(163, 243, 107, .25); color: white; }
+    .container { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .mono { font-family: var(--mono); }
+    .eyebrow { color: var(--green); font: 12px var(--mono); letter-spacing: .13em; text-transform: uppercase; }
+    .muted { color: var(--muted); }
+    .accent { color: var(--green); }
+    .topbar {
+      position: fixed; inset: 0 0 auto; z-index: 50; height: 76px;
+      border-bottom: 1px solid transparent; transition: .25s ease;
+    }
+    .topbar.scrolled { background: rgba(9, 13, 11, .86); backdrop-filter: blur(18px); border-color: var(--line); }
+    .nav { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-size: 20px; font-weight: 800; letter-spacing: -.08em; }
+    .brand span { color: var(--green); }
+    .navlinks { display: flex; align-items: center; gap: 32px; }
+    .navlinks a { color: #bdc9c0; font-size: 13px; font-weight: 700; transition: color .2s; }
+    .navlinks a:hover { color: var(--green); }
+    .nav-cta, .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      border: 1px solid rgba(163,243,107,.35); border-radius: 8px; padding: 12px 17px;
+      color: var(--green); font-size: 13px; font-weight: 800; transition: .2s ease;
+    }
+    .nav-cta:hover, .button:hover { background: var(--green); color: #10170f; transform: translateY(-2px); }
+    .menu-btn { display: none; background: transparent; border: 1px solid var(--line); color: white; border-radius: 8px; padding: 8px 11px; cursor: pointer; }
+    .hero { min-height: 730px; display: flex; align-items: center; padding: 150px 0 100px; position: relative; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 65px; align-items: center; }
+    .availability { display: inline-flex; align-items: center; gap: 9px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 100px; color: #c3d1c7; font: 11px var(--mono); margin-bottom: 28px; background: rgba(255,255,255,.02); }
+    .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 5px rgba(163,243,107,.1); }
+    h1 { font-size: clamp(48px, 7.2vw, 88px); line-height: 1.04; letter-spacing: -.075em; margin: 0 0 24px; font-weight: 800; }
+    h1 .outline { color: transparent; -webkit-text-stroke: 1px rgba(237,245,239,.72); }
+    .hero-copy { color: #aab8ae; max-width: 570px; font-size: 16px; line-height: 1.9; margin: 0 0 32px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .button.primary { background: var(--green); color: #0c140b; border-color: var(--green); }
+    .button.primary:hover { background: #c0ff91; }
+    .button.secondary { border-color: var(--line); color: #dce8df; }
+    .hero-meta { display: flex; gap: 28px; margin-top: 48px; flex-wrap: wrap; }
+    .meta-item { border-left: 1px solid var(--line); padding-left: 14px; }
+    .meta-item strong { display: block; font-size: 13px; }
+    .meta-item span { display: block; color: var(--muted); font: 10px var(--mono); margin-top: 3px; text-transform: uppercase; letter-spacing: .08em; }
+    .hero-art { min-height: 420px; position: relative; display: grid; place-items: center; }
+    .orbit { width: min(360px, 90%); aspect-ratio: 1; border: 1px solid rgba(163,243,107,.18); border-radius: 50%; position: relative; display: grid; place-items: center; }
+    .orbit:before, .orbit:after { content: ""; position: absolute; border: 1px solid rgba(163,243,107,.12); border-radius: 50%; }
+    .orbit:before { inset: 28px; }
+    .orbit:after { inset: 62px; }
+    .monogram {
+      width: 175px; height: 175px; border-radius: 38px; transform: rotate(-8deg);
+      display: grid; place-items: center; font-size: 62px; font-weight: 800; letter-spacing: -.1em;
+      color: #10200e; background: linear-gradient(145deg, #c5ff91, #6fcf57);
+      box-shadow: 0 20px 90px rgba(111,207,87,.18), inset 0 1px 0 rgba(255,255,255,.6);
+      position: relative; z-index: 2;
+    }
+    .orbit-label { position: absolute; z-index: 3; background: #111a14; border: 1px solid var(--line); padding: 9px 12px; border-radius: 8px; color: #cbd8ce; font: 10px var(--mono); }
+    .label-one { top: 38px; right: -18px; }
+    .label-two { bottom: 48px; left: -24px; }
+    .label-three { bottom: 2px; right: 48px; }
+    .scroll-note { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); color: #65746a; font: 10px var(--mono); letter-spacing: .15em; text-transform: uppercase; }
+    section { padding: 105px 0; border-top: 1px solid var(--line); }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 48px; }
+    h2 { font-size: clamp(32px, 4vw, 48px); letter-spacing: -.06em; line-height: 1.12; margin: 12px 0 0; }
+    .section-intro { max-width: 390px; color: var(--muted); font-size: 13px; margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: start; }
+    .about-text { color: #aab8ae; font-size: 15px; line-height: 1.95; margin: 0; }
+    .about-text + .about-text { margin-top: 17px; }
+    .info-card { background: linear-gradient(145deg, rgba(20,30,24,.9), rgba(12,18,14,.8)); border: 1px solid var(--line); border-radius: 14px; padding: 25px; }
+    .info-row { display: flex; justify-content: space-between; gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+    .info-row:last-child { border: 0; padding-bottom: 0; }
+    .info-row span:first-child { color: var(--muted); }
+    .info-row span:last-child { text-align: right; font-weight: 700; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { background: rgba(16,23,19,.8); border: 1px solid var(--line); border-radius: 14px; padding: 25px; min-height: 225px; transition: .25s ease; }
+    .card:hover { border-color: rgba(163,243,107,.4); transform: translateY(-5px); background: #121c15; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 34px; }
+    .card-icon { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(163,243,107,.25); border-radius: 10px; color: var(--green); font-size: 18px; }
+    .card-tag { color: #718077; font: 10px var(--mono); text-transform: uppercase; letter-spacing: .1em; }
+    .card h3 { font-size: 17px; margin: 0 0 9px; letter-spacing: -.03em; }
+    .card p { color: var(--muted); font-size: 12px; line-height: 1.8; margin: 0; }
+    .card-link { display: inline-flex; margin-top: 18px; color: var(--green); font: 11px var(--mono); gap: 7px; }
+    .skills-wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: 65px; }
+    .skills-copy { color: var(--muted); font-size: 14px; line-height: 1.9; }
+    .skill-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .skill-group { padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: rgba(16,23,19,.55); }
+    .skill-group h3 { color: var(--green); font: 11px var(--mono); text-transform: uppercase; letter-spacing: .1em; margin: 0 0 15px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { border: 1px solid var(--line); background: rgba(255,255,255,.025); color: #c7d3ca; border-radius: 6px; padding: 6px 9px; font-size: 11px; }
+    .education { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .edu-card { border: 1px solid var(--line); border-radius: 14px; padding: 25px; background: rgba(16,23,19,.7); }
+    .edu-card .year { color: var(--green); font: 10px var(--mono); letter-spacing: .1em; }
+    .edu-card h3 { margin: 13px 0 5px; font-size: 17px; }
+    .edu-card p { color: var(--muted); margin: 0; font-size: 12px; }
+    .contact-panel { display: grid; grid-template-columns: .9fr 1.1fr; gap: 55px; border: 1px solid rgba(163,243,107,.2); border-radius: 18px; padding: clamp(25px, 5vw, 55px); background: radial-gradient(circle at 0% 0%, rgba(163,243,107,.1), transparent 45%), #101813; }
+    .contact-panel h2 { margin-bottom: 18px; }
+    .contact-panel .section-intro { max-width: 360px; line-height: 1.9; }
+    .socials { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .socials a { border: 1px solid var(--line); border-radius: 7px; padding: 9px 12px; color: #c6d2c9; font: 11px var(--mono); transition: .2s; }
+    .socials a:hover { color: var(--green); border-color: rgba(163,243,107,.4); }
+    .contact-form { display: grid; gap: 12px; }
+    .contact-form input, .contact-form textarea { width: 100%; background: #0a100c; border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 14px 15px; outline: none; font-size: 12px; transition: border .2s; }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: rgba(163,243,107,.6); }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: #68766d; }
+    .contact-form button { cursor: pointer; justify-self: start; }
+    .form-note { color: #748278; font: 10px var(--mono); margin: 0; }
+    footer { padding: 30px 0; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; color: #718077; font: 10px var(--mono); }
+    .footer-inner a { color: var(--green); }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 850px) {
+      .hero-grid, .about-grid, .skills-wrap, .contact-panel { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding-top: 140px; }
+      .hero-art { min-height: 340px; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .section-head { align-items: start; flex-direction: column; }
+      .scroll-note { display: none; }
+    }
+    @media (max-width: 600px) {
+      .container { width: min(100% - 34px, var(--max)); }
+      .topbar { height: 66px; }
+      .navlinks { display: none; position: absolute; top: 65px; left: 0; right: 0; padding: 18px 22px 22px; background: rgba(9,13,11,.97); border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 18px; }
+      .navlinks.open { display: flex; }
+      .navlinks a { font-size: 14px; }
+      .nav-cta { text-align: center; }
+      .menu-btn { display: inline-flex; }
+      .hero { padding: 120px 0 70px; }
+      h1 { font-size: clamp(48px, 14vw, 70px); }
+      .hero-copy { font-size: 14px; }
+      .hero-meta { gap: 17px; margin-top: 35px; }
+      .hero-art { min-height: 300px; }
+      .orbit { width: 270px; }
+      .monogram { width: 135px; height: 135px; font-size: 48px; border-radius: 30px; }
+      .label-one { right: -5px; top: 25px; }
+      .label-two { left: -7px; bottom: 38px; }
+      .label-three { right: 30px; }
+      section { padding: 75px 0; }
+      .cards, .skill-groups, .education { grid-template-columns: 1fr; }
+      .card { min-height: auto; }
+      .card-top { margin-bottom: 22px; }
+      .contact-panel { gap: 30px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
-
 <body>
-
-<header id="header">
-<nav class="container">
-<a href="#home" class="logo">T<span>.</span>P</a>
-
-<div class="navlinks" id="navlinks">
-<a href="#about">About</a>
-<a href="#education">Education</a>
-<a href="#skills">Skills</a>
-<a href="#projects">Projects</a>
-
-<!-- NEW AI ROBOT LINK -->
-<a href="crazy.html">AI Robot ↗</a>
-
-<a href="#contact" class="navbtn">Let's Talk ↗</a>
-</div>
-
-<button class="menu" id="menu" aria-label="Toggle navigation">☰</button>
-</nav>
-</header>
-
-<main>
-
-<!-- HERO -->
-<section class="hero" id="home" style="border:0">
-<div class="container hero-grid">
-
-<div>
-<div class="availability">
-<span class="dot"></span>
-ENGINEERING STUDENT · INDIA
-</div>
-
-<p class="eyebrow">HELLO, I'M THRISHAN POOJARY</p>
-
-<h1>
-Curious mind.<br>
-<span class="outline">Builder's</span> mindset<span class="accent">.</span>
-</h1>
-
-<p class="hero-copy">
-I'm a third-semester B.E. student specializing in Artificial Intelligence and Machine Learning.
-I enjoy exploring technology, programming, building digital ideas and learning how things work.
-</p>
-
-<div class="actions">
-<a href="#projects" class="btn primary">Explore my work ↗</a>
-<a href="#contact" class="btn">Get in touch</a>
-
-<!-- NEW ROBOT EXPERIENCE BUTTON -->
-<a href="crazy.html" class="btn robot-btn">
-Experience AI Robot ↗
-</a>
-</div>
-
-<div class="hero-meta">
-<div class="meta">
-<strong>AI & ML</strong>
-<span>Specialization</span>
-</div>
-
-<div class="meta">
-<strong>3rd Semester</strong>
-<span>Current year</span>
-</div>
-
-<div class="meta">
-<strong>MITE</strong>
-<span>Institution</span>
-</div>
-</div>
-</div>
-
-<div class="hero-art">
-<div class="orbit">
-<span class="orbit-label l1">AI / ML</span>
-<span class="orbit-label l2">BUILD · LEARN</span>
-<span class="orbit-label l3">THRISHAN.TECH</span>
-<div class="monogram">TP.</div>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-<div class="container">
-
-<div class="section-head reveal">
-<p class="eyebrow">01 / ABOUT ME</p>
-<h2>A little about<br>what drives me.</h2>
-<p class="intro">
-Technology is more than a subject to me. It's a space to experiment, solve problems and turn ideas into something useful.
-</p>
-</div>
-
-<div class="about-grid reveal">
-<div>
-<p class="about-text">
-I'm Thrishan Poojary, an engineering student at Mangalore Institute of Technology & Engineering (MITE), Moodbidri, currently pursuing my third semester in Artificial Intelligence and Machine Learning.
-</p>
-
-<p class="about-text">
-My interests include programming, artificial intelligence, web development, entrepreneurship and technology. I'm developing my skills through practical projects and continuous learning.
-</p>
-
-<p class="about-text">
-I believe in learning by building, experimenting and improving every day.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-row"><span>Name</span><span>Thrishan Poojary</span></div>
-<div class="info-row"><span>Degree</span><span>B.E. · AIML</span></div>
-<div class="info-row"><span>Semester</span><span>Third Semester</span></div>
-<div class="info-row"><span>College</span><span>MITE, Moodbidri</span></div>
-<div class="info-row"><span>Mother Tongue</span><span>Tulu</span></div>
-<div class="info-row"><span>Languages</span><span>Kannada, English, Hindi</span></div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- EDUCATION -->
-<section id="education">
-<div class="container">
-
-<div class="section-head reveal">
-<p class="eyebrow">02 / EDUCATION</p>
-<h2>My academic journey.</h2>
-<p class="intro">
-Every step of my education has helped shape my interests and curiosity.
-</p>
-</div>
-
-<div class="education">
-
-<div class="edu-card reveal">
-<span class="year">CURRENT · THIRD SEMESTER</span>
-<h3>Bachelor of Engineering</h3>
-<p>Artificial Intelligence & Machine Learning</p>
-<p>Mangalore Institute of Technology & Engineering (MITE), Moodbidri</p>
-</div>
-
-<div class="edu-card reveal">
-<span class="year">1ST & 2ND PUC</span>
-<h3>Pre-University Education</h3>
-<p>Rotary PU College, Moodubidri</p>
-</div>
-
-<div class="edu-card reveal">
-<span class="year">8TH – 10TH STANDARD</span>
-<h3>High School</h3>
-<p>Government High School (GHS), Aliyoor</p>
-</div>
-
-<div class="edu-card reveal">
-<span class="year">LKG – 7TH STANDARD</span>
-<h3>Primary Education</h3>
-<p>Mount Carmel School, Shirthady</p>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-<div class="container">
-
-<div class="section-head reveal">
-<p class="eyebrow">03 / MY TOOLKIT</p>
-<h2>Skills & languages.</h2>
-<p class="intro">
-The technologies and languages I'm learning and using.
-</p>
-</div>
-
-<div class="skills-grid reveal">
-
-<div class="skill-group">
-<h3>Programming Languages</h3>
-<div class="tags">
-<span class="tag">C</span>
-<span class="tag">C++</span>
-<span class="tag">Python</span>
-</div>
-</div>
-
-<div class="skill-group">
-<h3>Web Technologies</h3>
-<div class="tags">
-<span class="tag">HTML</span>
-<span class="tag">CSS</span>
-<span class="tag">JavaScript</span>
-</div>
-</div>
-
-<div class="skill-group">
-<h3>Spoken Languages</h3>
-<div class="tags">
-<span class="tag">Tulu · Mother Tongue</span>
-<span class="tag">Kannada</span>
-<span class="tag">English</span>
-<span class="tag">Hindi</span>
-</div>
-</div>
-
-<div class="skill-group">
-<h3>Areas of Interest</h3>
-<div class="tags">
-<span class="tag">Artificial Intelligence</span>
-<span class="tag">Machine Learning</span>
-<span class="tag">Computer Vision</span>
-<span class="tag">Entrepreneurship</span>
-<span class="tag">Problem Solving</span>
-</div>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-<div class="container">
-
-<div class="section-head reveal">
-<p class="eyebrow">04 / PROJECTS</p>
-<h2>Ideas into action.</h2>
-<p class="intro">
-A growing collection of my projects, experiments and learning journey.
-</p>
-</div>
-
-<div class="cards">
-
-<article class="card reveal">
-<div class="card-icon">↗</div>
-<small>01 · E-COMMERCE</small>
-<h3>SlateDrop</h3>
-<p>
-An e-commerce venture exploring product presentation, online storefronts and digital marketing.
-</p>
-<a class="card-link" href="https://github.com/ThrishanPoojary/SLATEDROP" target="_blank" rel="noopener noreferrer">
-VIEW REPOSITORY ↗
-</a>
-</article>
-
-<article class="card reveal">
-<div class="card-icon">⌘</div>
-<small>02 · PROGRAMMING</small>
-<h3>C / C++ Projects</h3>
-<p>
-Programming exercises and small applications focused on logic, fundamentals and problem-solving.
-</p>
-<span class="card-link">LEARNING & BUILDING</span>
-</article>
-
-<article class="card reveal">
-<div class="card-icon">◎</div>
-<small>03 · EXPLORATION</small>
-<h3>AI & ML</h3>
-<p>
-Exploring artificial intelligence, machine learning and computer vision for future practical projects.
-</p>
-<span class="card-link">EXPLORING THE FIELD</span>
-</article>
-
-</div>
-</div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-<div class="container">
-
-<div class="contact-panel reveal">
-
-<div>
-<p class="eyebrow">05 / CONTACT</p>
-<h2>Have an idea?<br><span class="accent">Let's connect.</span></h2>
-
-<p class="intro">
-For collaborations, project discussions or conversations about technology, feel free to contact me.
-</p>
-
-<div class="socials">
-<a href="https://github.com/ThrishanPoojary" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
-
-<a href="https://www.instagram.com/thrishan_poojary_j/" target="_blank" rel="noopener noreferrer">INSTAGRAM ↗</a>
-
-<a href="mailto:thrishan208@gmail.com">PERSONAL EMAIL ↗</a>
-
-<a href="mailto:4MT25AI113@mite.ac.in">COLLEGE EMAIL ↗</a>
-</div>
-
-<p class="intro" style="margin-top:20px">
-Personal: thrishan208@gmail.com<br>
-College: 4MT25AI113@mite.ac.in<br>
-LinkedIn: Thrishan Poojary
-</p>
-</div>
-
-<form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
-
-<input type="hidden" name="access_key" value="603ccc28-dbeb-4231-a39f-b024e23ac97f">
-
-<input type="hidden" name="subject" value="New message from thrishan.tech">
-
-<input type="hidden" name="from_name" value="thrishan.tech portfolio">
-
-<input type="hidden" name="redirect" value="https://thrishan.tech/thanku.html">
-
-<input type="checkbox" name="botcheck" style="display:none">
-
-<input type="text" name="name" placeholder="Your name" required>
-
-<input type="email" name="email" placeholder="Your email address" required>
-
-<textarea name="message" placeholder="Write your message..." required></textarea>
-
-<button type="submit" class="btn primary">Send message ↗</button>
-
-<p class="muted" style="font-size:10px">
-Your message will be submitted through the contact form service.
-</p>
-
-</form>
-</div>
-</div>
-</section>
-
-</main>
-
-<footer>
-<div class="container footer-inner">
-<span>© <span id="year"></span> THRISHAN POOJARY</span>
-<span>DESIGNED WITH INTENTION <span class="accent">✳</span></span>
-<a href="#home">BACK TO TOP ↑</a>
-</div>
-</footer>
-
-<script>
-const header=document.getElementById('header');
-const menu=document.getElementById('menu');
-const nav=document.getElementById('navlinks');
-
-window.addEventListener('scroll',()=>{
- header.classList.toggle('scrolled',window.scrollY>20);
-},{passive:true});
-
-menu.addEventListener('click',()=>{
- nav.classList.toggle('open');
- menu.textContent=nav.classList.contains('open')?'✕':'☰';
-});
-
-nav.querySelectorAll('a').forEach(link=>{
- link.addEventListener('click',()=>{
-  nav.classList.remove('open');
-  menu.textContent='☰';
- });
-});
-
-document.getElementById('year').textContent=new Date().getFullYear();
-
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting){
-   entry.target.classList.add('visible');
-   observer.unobserve(entry.target);
-  }
- });
-},{threshold:.12});
-
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-</script>
-
+  <header class="topbar" id="topbar">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Thrishan Poojary home">T<span>.</span>P</a>
+      <div class="navlinks" id="navlinks">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="crazy.html">Build experience <span aria-hidden="true">↗</span></a>
+        <a class="nav-cta" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
+      </div>
+      <button class="menu-btn" id="menu-btn" aria-label="Open navigation" aria-expanded="false">☰</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="availability"><span class="pulse"></span> ENGINEERING STUDENT · INDIA</div>
+          <p class="eyebrow">HELLO, I'M THRISHAN POOJARY</p>
+          <h1>Curious mind.<br><span class="outline">Builder's</span> mindset<span class="accent">.</span></h1>
+          <p class="hero-copy">I'm a B.E. student specializing in Artificial Intelligence &amp; Machine Learning. I enjoy exploring technology, building digital ideas and learning how things work — one project at a time.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="crazy.html">See this site being built <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="#contact">Get in touch</a>
+          </div>
+          <div class="hero-meta">
+            <div class="meta-item"><strong>AI &amp; ML</strong><span>Field of study</span></div>
+            <div class="meta-item"><strong>MITE</strong><span>Institution</span></div>
+            <div class="meta-item"><strong>Always learning</strong><span>Current focus</span></div>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="TP monogram graphic">
+          <div class="orbit">
+            <span class="orbit-label label-one">AI / ML</span>
+            <span class="orbit-label label-two">BUILD · LEARN</span>
+            <span class="orbit-label label-three">THRISHAN.TECH</span>
+            <div class="monogram">TP<span style="color:#f2ffe9">.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-note">SCROLL TO EXPLORE ↓</div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><p class="eyebrow">01 / ABOUT</p><h2>A little about<br>what drives me.</h2></div>
+          <p class="section-intro">Technology is more than a subject to me. It's a space to experiment, solve problems and turn ideas into something useful.</p>
+        </div>
+        <div class="about-grid reveal">
+          <div>
+            <p class="about-text">I'm Thrishan Poojary, an engineering student at Mangalore Institute of Technology &amp; Engineering (MITE), pursuing Artificial Intelligence &amp; Machine Learning.</p>
+            <p class="about-text">I'm developing my foundations in programming and problem-solving while exploring web development, AI tools and entrepreneurship. I believe the best way to learn is to build, test, improve and repeat.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-row"><span>Name</span><span>Thrishan Poojary</span></div>
+            <div class="info-row"><span>Degree</span><span>Bachelor of Engineering</span></div>
+            <div class="info-row"><span>Specialization</span><span>Artificial Intelligence &amp; ML</span></div>
+            <div class="info-row"><span>College</span><span>MITE, Moodbidri</span></div>
+            <div class="info-row"><span>Interests</span><span>Technology · Building · Fitness</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><p class="eyebrow">02 / SELECTED WORK</p><h2>Ideas into action.</h2></div>
+          <p class="section-intro">A growing collection of experiments and projects. I'll keep adding as I build and learn.</p>
+        </div>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-top"><div class="card-icon">↗</div><span class="card-tag">E-COMMERCE</span></div>
+            <h3>SlateDrop</h3>
+            <p>An e-commerce venture exploring product presentation, online storefronts and digital marketing.</p>
+            <a class="card-link" href="https://github.com/ThrishanPoojary/SLATEDROP" target="_blank" rel="noopener noreferrer">VIEW REPOSITORY ↗</a>
+          </article>
+          <article class="card reveal">
+            <div class="card-top"><div class="card-icon">⌘</div><span class="card-tag">PROGRAMMING</span></div>
+            <h3>C / C++ Practice</h3>
+            <p>Small programming exercises focused on logic, fundamentals and learning to solve problems through code.</p>
+            <span class="card-link">FOUNDATION IN PROGRESS</span>
+          </article>
+          <article class="card reveal">
+            <div class="card-top"><div class="card-icon">◎</div><span class="card-tag">EXPLORATION</span></div>
+            <h3>AI &amp; ML Experiments</h3>
+            <p>Exploring artificial intelligence, machine learning and computer vision as areas for future projects.</p>
+            <span class="card-link">EXPLORING THE FIELD</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><p class="eyebrow">03 / TOOLKIT</p><h2>Learning by doing.</h2></div>
+        </div>
+        <div class="skills-wrap reveal">
+          <p class="skills-copy">I'm building a practical toolkit step by step. These are the areas I'm learning, using or actively exploring — not a claim of mastery.</p>
+          <div class="skill-groups">
+            <div class="skill-group"><h3>Programming</h3><div class="tags"><span class="tag">C</span><span class="tag">C++</span><span class="tag">Python · Basics</span></div></div>
+            <div class="skill-group"><h3>Web</h3><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript · Basics</span></div></div>
+            <div class="skill-group"><h3>Exploring</h3><div class="tags"><span class="tag">Artificial Intelligence</span><span class="tag">Machine Learning</span><span class="tag">Computer Vision</span></div></div>
+            <div class="skill-group"><h3>Interests</h3><div class="tags"><span class="tag">Entrepreneurship</span><span class="tag">Problem Solving</span><span class="tag">Fitness</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><p class="eyebrow">04 / EDUCATION</p><h2>The learning path.</h2></div>
+          <p class="section-intro">Building a strong academic and technical foundation for the road ahead.</p>
+        </div>
+        <div class="education">
+          <article class="edu-card reveal">
+            <span class="year">UNDERGRADUATE</span>
+            <h3>B.E. — Artificial Intelligence &amp; Machine Learning</h3>
+            <p>Mangalore Institute of Technology &amp; Engineering (MITE), Moodbidri</p>
+          </article>
+          <article class="edu-card reveal">
+            <span class="year">PRE-UNIVERSITY</span>
+            <h3>Pre-University Education</h3>
+            <p>Rotary PU College, Moodubidire · Physics, Chemistry &amp; Mathematics</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div>
+            <p class="eyebrow">05 / CONTACT</p>
+            <h2>Have an idea?<br><span class="accent">Let's connect.</span></h2>
+            <p class="section-intro">For collaborations, project discussions or just a conversation about technology, send me a message.</p>
+            <div class="socials">
+              <a href="https://github.com/ThrishanPoojary" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+            </div>
+          </div>
+          <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="603ccc28-dbeb-4231-a39f-b024e23ac97f">
+            <input type="hidden" name="subject" value="New message from thrishan.tech">
+            <input type="hidden" name="from_name" value="thrishan.tech portfolio">
+            <input type="hidden" name="redirect" value="https://thrishan.tech/thanku.html">
+            <input type="checkbox" name="botcheck" style="display:none">
+            <input type="text" name="name" placeholder="Your name" autocomplete="name" required>
+            <input type="email" name="email" placeholder="Your email address" autocomplete="email" required>
+            <textarea name="message" placeholder="Tell me what's on your mind..." required></textarea>
+            <button class="button primary" type="submit">Send message <span aria-hidden="true">↗</span></button>
+            <p class="form-note">Your message will be sent through the contact form service.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> THRISHAN POOJARY. ALL RIGHTS RESERVED.</span>
+      <span>DESIGNED &amp; BUILT WITH INTENTION <span class="accent">✳</span></span>
+      <a href="#home">BACK TO TOP ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const topbar = document.getElementById('topbar');
+    const menuBtn = document.getElementById('menu-btn');
+    const navlinks = document.getElementById('navlinks');
+
+    window.addEventListener('scroll', () => {
+      topbar.classList.toggle('scrolled', window.scrollY > 24);
+    }, { passive: true });
+
+    menuBtn.addEventListener('click', () => {
+      const open = navlinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      menuBtn.textContent = open ? '✕' : '☰';
+    });
+
+    navlinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navlinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.setAttribute('aria-label', 'Open navigation');
+        menuBtn.textContent = '☰';
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
