@@ -150,6 +150,213 @@ footer a{color:var(--green)}
  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
  .reveal{opacity:1;transform:none}
 }
+  
+/* ===== CINEMATIC SCROLL ANIMATIONS ===== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Scroll progress */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, #596dff, #bd7bff, #00e5ff);
+    box-shadow: 0 0 15px #8b9cff;
+    z-index: 9999;
+}
+
+/* Ambient background glow */
+body {
+    background-image:
+        radial-gradient(circle at 15% 20%, rgba(85,100,255,.09), transparent 30%),
+        radial-gradient(circle at 85% 55%, rgba(160,80,255,.07), transparent 30%);
+    background-attachment: fixed;
+}
+
+/* Reveal base */
+.reveal {
+    opacity: 0;
+    transform: translateY(65px) scale(.96);
+    filter: blur(8px);
+    transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.16,1,.3,1),
+        filter .9s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+/* Different reveal directions */
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-90px);
+    transition: .9s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(90px);
+    transition: .9s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal-left.visible,
+.reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Staggered cards */
+.card {
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition:
+        transform .25s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.card.visible {
+    animation: cardEntrance .85s cubic-bezier(.16,1,.3,1) both;
+}
+
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: perspective(900px) translateY(90px) rotateX(18deg) scale(.88);
+        filter: blur(8px);
+    }
+    to {
+        opacity: 1;
+        transform: perspective(900px) translateY(0) rotateX(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Neon card hover */
+.card:hover {
+    border-color: #8b9cff;
+    box-shadow:
+        0 15px 45px rgba(91,110,255,.13),
+        0 0 25px rgba(139,156,255,.08);
+}
+
+/* Skill pop animation */
+.skill {
+    transition: .35s cubic-bezier(.2,1.5,.5,1);
+}
+
+.skill.visible {
+    animation: skillPop .6s cubic-bezier(.2,1.5,.5,1) both;
+}
+
+@keyframes skillPop {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(.5) rotate(-8deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0);
+    }
+}
+
+.skill:hover {
+    color: #fff;
+    border-color: #8b9cff;
+    box-shadow: 0 0 20px rgba(139,156,255,.2);
+    transform: translateY(-5px) scale(1.06);
+}
+
+/* Animated hero title */
+.hero h1 {
+    animation: heroTitle 1.2s cubic-bezier(.16,1,.3,1) both;
+}
+
+@keyframes heroTitle {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+        letter-spacing: 8px;
+        filter: blur(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: -3px;
+        filter: blur(0);
+    }
+}
+
+/* Glowing decorative orb */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    right: 8%;
+    top: 20%;
+    background: radial-gradient(circle, rgba(115,130,255,.18), transparent 70%);
+    filter: blur(15px);
+    pointer-events: none;
+    animation: orbFloat 7s ease-in-out infinite alternate;
+}
+
+@keyframes orbFloat {
+    from { transform: translate(0,0) scale(.8); }
+    to { transform: translate(-35px,35px) scale(1.25); }
+}
+
+/* Section heading underline */
+.section-title {
+    position: relative;
+    width: fit-content;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -9px;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg,#8b9cff,#c07bff);
+    border-radius: 10px;
+    transition: width 1s ease .3s;
+}
+
+.section-title.visible::after {
+    width: 75%;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reveal, .reveal-left, .reveal-right {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+}
+
 </style>
 </head>
 
