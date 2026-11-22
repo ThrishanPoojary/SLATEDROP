@@ -1,45 +1,1182 @@
 
-<section id="projects">
-  <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <p class="eyebrow">02 / FEATURED PROJECT</p>
-        <h2>Ideas into action.</h2>
-      </div>
-      <p class="section-intro">
-        Building real-world applications by combining programming,
-        machine learning and creative problem-solving.
-      </p>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b09">
+<title>Thrishan Poojary | AI & ML Developer</title>
+<meta name="description" content="Thrishan Poojary — AI & ML engineering student, technology enthusiast and aspiring developer. Explore my projects and portfolio.">
 
-    <div class="cards">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-      <article class="card reveal">
-        <div class="card-top">
-          <div class="card-icon">✦</div>
-          <span class="card-tag">AI / MACHINE LEARNING</span>
-        </div>
+<style>
+:root {
+    --bg: #080b09;
+    --surface: #101612;
+    --surface2: #141d17;
+    --green: #a3ffb0;
+    --green2: #56d879;
+    --white: #f0f5f0;
+    --muted: #89968c;
+    --border: rgba(163,255,176,.13);
+    --mono: "DM Mono", monospace;
+    --font: "Manrope", sans-serif;
+}
 
-        <h3>AutoPredict — Used Car Price Predictor</h3>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        <p>
-          An AI-powered web application that predicts the estimated
-          resale value of used cars using a trained Random Forest
-          machine learning model.
-        </p>
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
 
-        <div class="tags" style="margin-top:18px">
-          <span class="tag">Python</span>
-          <span class="tag">Scikit-learn</span>
-          <span class="tag">FastAPI</span>
-          <span class="tag">HTML / CSS / JS</span>
-        </div>
+body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: var(--font);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
 
-        <a class="card-link" href="autopredict.html">
-          EXPLORE PROJECT ↗
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+::selection {
+    background: var(--green);
+    color: #071009;
+}
+
+.container {
+    width: min(1120px, 90%);
+    margin: auto;
+}
+
+.eyebrow {
+    color: var(--green);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.section {
+    padding: 110px 0;
+    border-top: 1px solid var(--border);
+}
+
+.section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.section-head h2 {
+    font-size: clamp(32px, 5vw, 54px);
+    letter-spacing: -2px;
+    line-height: 1.15;
+}
+
+.section-intro {
+    color: var(--muted);
+    max-width: 390px;
+    font-size: 14px;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(8,11,9,.86);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.brand span {
+    color: var(--green);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-size: 12px;
+    color: #b0bbb2;
+    transition: .25s;
+}
+
+.nav-links a:hover {
+    color: var(--green);
+}
+
+.nav-links .nav-special {
+    color: var(--green);
+    border: 1px solid var(--border);
+    padding: 9px 14px;
+    border-radius: 5px;
+}
+
+.menu-toggle {
+    display: none;
+    color: var(--green);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 130px 0 90px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    right: -160px;
+    top: 15%;
+    background: radial-gradient(circle, rgba(65,190,100,.13), transparent 70%);
+    pointer-events: none;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr .7fr;
+    align-items: center;
+    gap: 55px;
+}
+
+.availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--green);
+    font-family: var(--mono);
+    font-size: 11px;
+    border: 1px solid var(--border);
+    padding: 9px 13px;
+    border-radius: 30px;
+    margin-bottom: 28px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--green2);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--green2);
+}
+
+.hero h1 {
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 1.04;
+    letter-spacing: -5px;
+    font-weight: 800;
+}
+
+.hero h1 span {
+    color: var(--green);
+}
+
+.hero-description {
+    color: var(--muted);
+    max-width: 540px;
+    margin-top: 27px;
+    font-size: 15px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 35px;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 21px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: .25s;
+}
+
+.btn-primary {
+    background: var(--green);
+    color: #08110a;
+    border-color: var(--green);
+}
+
+.btn-primary:hover {
+    background: #c0ffca;
+    transform: translateY(-3px);
+}
+
+.btn-outline:hover {
+    color: var(--green);
+    border-color: var(--green);
+    transform: translateY(-3px);
+}
+
+.hero-card {
+    position: relative;
+    background: linear-gradient(145deg, #142019, #0b100d);
+    border: 1px solid var(--border);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 25px 80px rgba(0,0,0,.25);
+}
+
+.hero-card-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--green);
+    letter-spacing: 2px;
+}
+
+.hero-symbol {
+    font-size: 100px;
+    line-height: 1.5;
+    font-weight: 800;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--green);
+    text-align: center;
+}
+
+.hero-card-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 11px;
+}
+
+/* ABOUT */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 65px;
+}
+
+.about-text {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.about-text p + p {
+    margin-top: 18px;
+}
+
+.about-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.detail {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 22px;
+    border-radius: 7px;
+}
+
+.detail small {
+    display: block;
+    color: var(--green);
+    font-family: var(--mono);
+    font-size: 10px;
+    margin-bottom: 10px;
+}
+
+.detail strong {
+    font-size: 14px;
+}
+
+/* EDUCATION */
+
+.education-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    align-items: center;
+}
+
+.education-card h3 {
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.education-card p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.education-year {
+    color: var(--green);
+    font-family: var(--mono);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* SKILLS */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 23px;
+    transition: .25s;
+}
+
+.skill-card:hover {
+    border-color: rgba(163,255,176,.5);
+    transform: translateY(-4px);
+}
+
+.skill-card span {
+    display: block;
+    color: var(--green);
+    font-family: var(--mono);
+    font-size: 11px;
+    margin-bottom: 13px;
+}
+
+.skill-card h3 {
+    font-size: 15px;
+}
+
+.skill-card p {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 7px;
+}
+
+/* PROJECTS */
+
+.project-card {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #111a14, #0b100d);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 36px;
+    transition: .3s;
+}
+
+.project-card:hover {
+    border-color: rgba(163,255,176,.45);
+    transform: translateY(-5px);
+}
+
+.project-card::after {
+    content: "AI";
+    position: absolute;
+    right: 35px;
+    top: 25px;
+    color: rgba(163,255,176,.07);
+    font-size: 120px;
+    font-weight: 800;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.project-icon {
+    font-size: 25px;
+    color: var(--green);
+}
+
+.project-tag {
+    font-family: var(--mono);
+    color: var(--green);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+}
+
+.project-card h3 {
+    font-size: clamp(23px, 4vw, 34px);
+    margin-top: 28px;
+    position: relative;
+    z-index: 1;
+}
+
+.project-card > p {
+    max-width: 650px;
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 13px;
+    position: relative;
+    z-index: 1;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 24px;
+}
+
+.tag {
+    color: #c5d3c7;
+    background: rgba(163,255,176,.06);
+    border: 1px solid var(--border);
+    padding: 7px 11px;
+    font-family: var(--mono);
+    font-size: 10px;
+    border-radius: 4px;
+}
+
+.project-link {
+    display: inline-block;
+    color: var(--green);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.project-link:hover {
+    color: white;
+}
+
+/* CONTACT */
+
+.contact-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+}
+
+.contact-box h3 {
+    font-size: 27px;
+    line-height: 1.3;
+    margin-bottom: 16px;
+}
+
+.contact-box p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.contact-links a {
+    padding: 14px 16px;
+    background: #0b100d;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: #dce7dd;
+    font-size: 12px;
+    transition: .2s;
+}
+
+.contact-links a:hover {
+    color: var(--green);
+    border-color: var(--green);
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 30px 0;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-inner p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.footer-inner a {
+    color: var(--green);
+    font-size: 12px;
+}
+
+/* SCROLL PROGRESS */
+
+.progress {
+    position: fixed;
+    z-index: 1200;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--green);
+}
+
+/* REVEAL: content stays visible without JavaScript */
+
+.reveal {
+    opacity: 1;
+    transform: none;
+}
+
+.js-ready .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.js-ready .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-card {
+        max-width: 430px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-grid {
+        gap: 35px;
+    }
+}
+
+@media (max-width: 650px) {
+    .nav-inner {
+        height: 68px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        padding: 25px 5%;
+        background: #0b100d;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .hero {
+        padding-top: 120px;
+    }
+
+    .hero h1 {
+        letter-spacing: -3px;
+    }
+
+    .section {
+        padding: 80px 0;
+    }
+
+    .section-head {
+        display: block;
+    }
+
+    .section-intro {
+        margin-top: 17px;
+    }
+
+    .about-grid,
+    .contact-box {
+        grid-template-columns: 1fr;
+    }
+
+    .about-details {
+        gap: 10px;
+    }
+
+    .education-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .project-card {
+        padding: 25px;
+    }
+
+    .project-card::after {
+        font-size: 85px;
+        right: 15px;
+    }
+
+    .contact-box {
+        padding: 25px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 390px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- NAVIGATION -->
+
+<header class="navbar">
+    <div class="container nav-inner">
+
+        <a href="#home" class="brand">
+            Thrishan<span>.</span>
         </a>
-      </article>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+            MENU
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <a href="crazy.html" class="nav-special">Build Experience ↗</a>
+        </nav>
 
     </div>
-  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+    <div class="container hero-grid">
+
+        <div class="reveal">
+
+            <div class="availability">
+                <span class="status-dot"></span>
+                STUDENT · AI & MACHINE LEARNING
+            </div>
+
+            <p class="eyebrow">HELLO, WORLD. I'M</p>
+
+            <h1>
+                Thrishan<br>
+                <span>Poojary.</span>
+            </h1>
+
+            <p class="hero-description">
+                An engineering student exploring the intersection of
+                artificial intelligence, machine learning and technology.
+                I enjoy turning ideas into practical digital experiences.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">
+                    Explore my work ↗
+                </a>
+
+                <a href="crazy.html" class="btn btn-outline">
+                    See this website being built ↗
+                </a>
+            </div>
+
+        </div>
+
+        <div class="hero-card reveal">
+
+            <div class="hero-card-label">PERSONAL PORTFOLIO / 2026</div>
+
+            <div class="hero-symbol">T.</div>
+
+            <div class="hero-card-bottom">
+                BUILDING · LEARNING · EXPERIMENTING
+            </div>
+
+        </div>
+
+    </div>
 </section>
+
+<!-- ABOUT -->
+
+<section class="section" id="about">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div>
+                <p class="eyebrow">01 / ABOUT ME</p>
+                <h2>Curious by nature.<br>Builder by choice.</h2>
+            </div>
+
+            <p class="section-intro">
+                Learning technology by understanding it, experimenting
+                with it and building things with it.
+            </p>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-text reveal">
+                <p>
+                    I'm Thrishan Poojary, a first-year B.E. student
+                    specialising in Artificial Intelligence and
+                    Machine Learning.
+                </p>
+
+                <p>
+                    My interests include programming, machine learning,
+                    web development and emerging technologies. I believe
+                    the best way to learn is to build practical projects
+                    and understand how they work.
+                </p>
+
+                <p>
+                    I'm currently strengthening my programming
+                    fundamentals while exploring how AI can solve
+                    real-world problems.
+                </p>
+            </div>
+
+            <div class="about-details reveal">
+
+                <div class="detail">
+                    <small>01 / DEGREE</small>
+                    <strong>B.E. Engineering</strong>
+                </div>
+
+                <div class="detail">
+                    <small>02 / SPECIALISATION</small>
+                    <strong>AI & ML</strong>
+                </div>
+
+                <div class="detail">
+                    <small>03 / INSTITUTION</small>
+                    <strong>MITE, Moodbidri</strong>
+                </div>
+
+                <div class="detail">
+                    <small>04 / INTEREST</small>
+                    <strong>Technology & Innovation</strong>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+
+<section class="section" id="education">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div>
+                <p class="eyebrow">02 / EDUCATION</p>
+                <h2>My learning journey.</h2>
+            </div>
+
+            <p class="section-intro">
+                Building a foundation in engineering, computing
+                and artificial intelligence.
+            </p>
+        </div>
+
+        <div class="education-card reveal">
+
+            <div>
+                <h3>Mangalore Institute of Technology & Engineering</h3>
+                <p>
+                    Bachelor of Engineering · Artificial Intelligence
+                    and Machine Learning
+                </p>
+                <p>Moodbidri, Karnataka</p>
+            </div>
+
+            <div class="education-year">
+                2025 — PRESENT
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- SKILLS -->
+
+<section class="section" id="skills">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div>
+                <p class="eyebrow">03 / SKILLS & TECHNOLOGIES</p>
+                <h2>Tools I'm exploring.</h2>
+            </div>
+
+            <p class="section-intro">
+                My current technical toolkit and areas of learning.
+            </p>
+        </div>
+
+        <div class="skills-grid">
+
+            <div class="skill-card reveal">
+                <span>01 / PROGRAMMING</span>
+                <h3>C & C++</h3>
+                <p>Programming fundamentals and problem solving</p>
+            </div>
+
+            <div class="skill-card reveal">
+                <span>02 / PROGRAMMING</span>
+                <h3>Python</h3>
+                <p>Learning Python for AI and data applications</p>
+            </div>
+
+            <div class="skill-card reveal">
+                <span>03 / MACHINE LEARNING</span>
+                <h3>Scikit-learn</h3>
+                <p>Model training and prediction</p>
+            </div>
+
+            <div class="skill-card reveal">
+                <span>04 / WEB DEVELOPMENT</span>
+                <h3>HTML, CSS & JS</h3>
+                <p>Responsive web interfaces</p>
+            </div>
+
+            <div class="skill-card reveal">
+                <span>05 / BACKEND</span>
+                <h3>FastAPI</h3>
+                <p>Building Python APIs</p>
+            </div>
+
+            <div class="skill-card reveal">
+                <span>06 / DATA</span>
+                <h3>Pandas</h3>
+                <p>Data handling and preprocessing</p>
+            </div>
+
+            <div class="skill-card reveal">
+                <span>07 / TOOLS</span>
+                <h3>Git & GitHub</h3>
+                <p>Version control and repositories</p>
+            </div>
+
+            <div class="skill-card reveal">
+                <span>08 / ENVIRONMENT</span>
+                <h3>VS Code</h3>
+                <p>Development and experimentation</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section class="section" id="projects">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div>
+                <p class="eyebrow">04 / FEATURED PROJECT</p>
+                <h2>Ideas into action.</h2>
+            </div>
+
+            <p class="section-intro">
+                Building real-world applications by combining
+                programming, machine learning and creative problem-solving.
+            </p>
+        </div>
+
+        <article class="project-card reveal">
+
+            <div class="project-top">
+                <div class="project-icon">✦</div>
+                <span class="project-tag">AI / MACHINE LEARNING</span>
+            </div>
+
+            <h3>AutoPredict — Used Car Price Predictor</h3>
+
+            <p>
+                An AI-powered web application that predicts the estimated
+                resale value of used cars using a trained Random Forest
+                machine learning model. The application connects a
+                Python-based prediction API to a web interface.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Scikit-learn</span>
+                <span class="tag">Random Forest</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">HTML / CSS / JS</span>
+            </div>
+
+            <a href="autopredict.html" class="project-link">
+                EXPLORE PROJECT ↗
+            </a>
+
+        </article>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+
+<section class="section" id="contact">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div>
+                <p class="eyebrow">05 / CONTACT</p>
+                <h2>Let's connect.</h2>
+            </div>
+
+            <p class="section-intro">
+                Have an interesting idea, project or opportunity?
+                Feel free to reach out.
+            </p>
+        </div>
+
+        <div class="contact-box reveal">
+
+            <div>
+                <h3>Good things start with a conversation.</h3>
+
+                <p>
+                    I'm interested in connecting with people who enjoy
+                    technology, creativity, programming and innovation.
+                </p>
+
+                <div style="margin-top:25px">
+                    <a href="mailto:thrishan208@gmail.com" class="btn btn-primary">
+                        Send me an email ↗
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-links">
+
+                <a href="mailto:thrishan208@gmail.com">
+                    EMAIL — thrishan208@gmail.com ↗
+                </a>
+
+                <a href="https://github.com/ThrishanPoojary" target="_blank" rel="noopener noreferrer">
+                    GITHUB — View my repositories ↗
+                </a>
+
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                    INSTAGRAM — Connect ↗
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+    <div class="container footer-inner">
+
+        <p>© 2026 Thrishan Poojary. Built with curiosity and code.</p>
+
+        <a href="#home">BACK TO TOP ↑</a>
+
+    </div>
+</footer>
+
+<script>
+/* Enable animation only after JavaScript is available */
+
+document.documentElement.classList.add("js-ready");
+
+/* Mobile navigation */
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+    });
+});
+
+/* Scroll reveal */
+
+const revealElements = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+
+    }, {
+        threshold: 0.08
+    });
+
+    revealElements.forEach(element => observer.observe(element));
+
+} else {
+    revealElements.forEach(element => element.classList.add("visible"));
+}
+
+/* Scroll progress */
+
+const progress = document.getElementById("progress");
+
+window.addEventListener("scroll", () => {
+
+    const scrollable =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+    const percentage = scrollable > 0
+        ? (window.scrollY / scrollable) * 100
+        : 0;
+
+    progress.style.width = percentage + "%";
+
+}, { passive: true });
+
+/* Ensure content remains visible if an observer fails */
+
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        revealElements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+
+            if (rect.top < window.innerHeight) {
+                element.classList.add("visible");
+            }
+        });
+    }, 1000);
+});
+</script>
+
+</body>
+</html>
